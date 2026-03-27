@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_fixed</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            height: 1000px;
+        }
+        .wrapper:nth-of-type(1){
+            top:0px;
+            position: relative;
+        }
+        .wrapper:nth-of-type(2){
+            top:3000px;
+            position: absolute;
+        }
+        .wrapper:nth-of-type(3){
+            position: static;
+        }
+        .menu{
+            width: 500px;
+            height: 50px;
+            background-color: rgba(200,0,200, 0.3);
+            box-shadow: 5px 5px 5px #000;
+            position: fixed;    /* 화면 기준 배치 */
+            right: 20px;
+            top: 50px;
+        }
+        .st{
+            width: 500px;
+            height: 50px;
+            background-color: rgba(200,255,0, 0.7);
+            box-shadow: 5px 5px 5px #000;
+            position: sticky;    /* 자신 위치에서 좌표값 위치
+                                    화면 기준 고정 */
+            left: 20px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>05_fixed</h1>
+    <div class="wrapper">
+        <img src="../fff/images.jpg" alt="">
+    </div>
+    
+    <div class="st">자슥</div>
+        
+    <div class="wrapper">
+        <img src="../fff/images (1).jpg" alt="">
+    </div>
+    <div class="wrapper">
+        <img src="../fff/images (2).jpg" alt="">
+    </div>
+
+    <div class="menu">멘유<div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06_example</title>
+    <style>
+        *{
+            margin: 0 auto;
+            padding: 0;
+        }
+        main{
+            width: 300px;
+            padding: 5px;
+            background-color: #3333332d;
+            border: 1px solid #333;
+            box-shadow: 20px 20px 12px #333;
+        }
+        li{
+            list-style: none;
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #333;
+        }
+    </style>
+        <script>
+            const pname = "국수영";
+            var kor = 81, eng = 87, mat = 82
+            var tot = kor + eng + mat;
+            var ave = tot / 3;
+
+            var back =  
+                        mat >= 50000 ? "수학의 신" :
+                        kor <= 5 ? "외계인" :
+                        ave >= 90 ? "수" :
+                        ave >= 80 ? "우" :
+                        ave >= 70 ? "미" :
+                        ave >= 60 ? "양" : "집에 가"
+
+            
+
+            if(ave >= 90){
+                back = "수"
+            }else if(ave >= 80){
+                back = "우"
+                if(kor >= 80 && eng >= 80 && mat >= 80){
+                    back += " (균등)"
+                }
+            }else if(ave >=70){
+                back = "미"
+            }else if(ave >=60){
+                back = "양"
+            }else{
+                back = "가"
+            }
+            
+        </script>
+</head>
+
+
+<body>
+    <h1>06_example</h1>
+    <main>
+         <script>document.write(`이름 : ${pname} <br/> 국어 : ${kor} 영어 : ${eng} 수학 : ${mat} 
+                            <br/> 총점 : ${tot} <br/> 평균 : ${ave} <br/> 등급 : ${back}`)</script>
+        
+    </main>
+
+    <h2>등급2</h2>
+    <figure>
+        <ul>
+            <li><script>document.write(`이름 : ${pname}`)</script></li>
+            <li><script>document.write(`국어 : ${kor}`)</script></li>
+            <li><script>document.write(`영어 : ${eng}`)</script></li>
+            <li><script>document.write(`수학 : ${mat}`)</script></li>
+            <li><script>document.write(`총점 : ${tot}`)</script></li>
+            <li><script>document.write(`평균 : ${ave}`)</script></li>
+            <li><script>document.write(`등급 : ${back}`)</script></li>
+        </ul>
+    </figure>
+</body>
+</html>

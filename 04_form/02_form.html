@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사람인 통합 개인회원 가입</title>
+</head>
+<body>
+
+    <form action="joinReg">
+        <table border="0" align="center" width="500" cellpadding="5">
+            
+            <tr>
+                <td align="center" colspan="2">
+                    <h2>사람인 통합 개인회원 가입</h2>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" ><b>아이디</b></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="text" name="uid" size="55" style="height: 40px;" 
+                    placeholder="4~20자리 / 영문, 숫자, 특수문자 '_' 사용가능">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><b>비밀번호</b></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="password" name="pas" size="55" style="height: 40px;"
+                    placeholder="8~16자리 / 영문 대소문자, 숫자, 특수문자 조합">
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>휴대폰</b></td>
+                <td align="right">
+                    <input type="checkbox" name="out"> 해외 거주 중이에요
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="인증요청" style="width: 400px; height: 50px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><b>이메일</b></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="email" name="ema" size="55" 
+                     style="height: 40px;" placeholder="email@saramin.co.kr">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <small>ⓘ 취업에 관련된 정보를 받을 때 필요해요</small>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><b><legend> 약관</legend></b></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                        <p>
+                            <input type="checkbox" name="all"> 전체 동의
+                        </p>
+
+                        <p>
+                            <small>
+                                위치기반 서비스 이용약관(선택), 마케팅 정보 수신 동의<br>
+                                (이메일, SMS/MMS)(선택) 동의를 포함합니다.
+                            </small>
+                        </p>
+
+                        <p>
+                            <input type="checkbox" name="on"> (필수) 개인회원 약관에 동의 >
+                        </p>
+
+                        <p>
+                            <input type="checkbox" name="tw"> (필수) 개인정보 수집 및 이용에 동의 >
+                        </p>
+
+                        <p>
+                            <input type="checkbox" name="th"> (선택) 위치기반서비스 이용약관에 동의 >
+                        </p>
+
+                        <p>
+                            <input type="checkbox" name="fo"> (선택) 마케팅 정보 수신 동의 - 이메일 >
+                        </p>
+
+                        <p>
+                            <input type="checkbox" name="fi"> (선택) 마케팅 정보 수신 동의 - SMS/MMS >
+                        </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><b>안내</b></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea cols="58" rows="4" readonly>
+- 사람인 회원으로 가입하시면 하나의 ID로 사람인이 제공하는 모든 서비스를 이용하실 수 있습니다.
+                    </textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <br>
+                    <input type="submit" value="준비 갈 완료" style="width:400px; height:40px;">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+
+</body>
+</html>

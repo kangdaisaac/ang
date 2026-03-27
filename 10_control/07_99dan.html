@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_99dan</title>
+    <style>
+        main{
+            margin: auto;
+            width: 300px;
+            display: block;
+        }
+        
+        section{
+            background-color: #ffa;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #333;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>07_99dan</h1>
+
+    <script>
+        for(let a = 1; a <= 9; a++){
+        document.write(`<main>`)
+            document.write(`<section><h3>${a}단</h3>`)
+
+            for(let b = 1; b <= 9; b++){
+                document.write(`<div>${a} x ${b} = ${a * b}<br/></div>`)
+            }
+            document.write(`</section>`)
+        document.write(`</main>`)
+
+        }
+    </script>
+</body>
+</html>

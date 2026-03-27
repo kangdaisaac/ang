@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08_forstar</title>
+</head>
+<body>
+    <h1>08_forstar</h1>
+    <script>
+            document.write(`<h2>1번</h2>`)
+        for(let line = 0; line < 5; line++){
+            for (let star = 0; star <=line; star++){
+                                //star <= line : 반복횟수 동적처리
+                document.write(`*`)
+            }
+            document.write(`<br/>`)
+        }
+
+            document.write(`<h2>2번</h2>`)
+        for(let line = 4; line >= 0; line--){
+            for (let star = 0; star <=line; star++){
+                document.write(`*`)
+            }
+            document.write(`<br/>`)
+        }
+
+            document.write(`<h2>3번</h2>`)
+        for(let line = 0; line < 5; line++){
+            for(let space =4; space > line; space--){
+                document.write(`&nbsp;&nbsp;`)
+            }
+            for (let star = 0; star <=line; star++){
+                document.write(`*`)
+            }
+            document.write(`<br/>`)
+        }
+
+            document.write(`<h2>4번</h2>`)
+        for(let line = 4; line >= 0; line--){
+            for(let space =4; space > line; space--){
+                document.write(`&nbsp;&nbsp;`)
+            }
+            for (let star = 0; star <=line; star++){
+                document.write(`*`)
+            }
+            document.write(`<br/>`)
+        }
+
+            document.write(`<h2>5번</h2>`)
+        for(let line = 0; line < 5; line++){
+            for(let space =4; space > line; space--){
+                document.write(`&nbsp;&nbsp;`)
+            }
+            for (let star = 0; star <=line *2; star++){
+                document.write(`*`)
+            }
+            document.write(`<br/>`)
+        }
+
+            document.write(`<h2>6번</h2>`)
+        for(let line = 4; line >= 0; line--){
+            for(let space =4; space > line; space--){
+                document.write(`&nbsp;&nbsp;`)
+            }
+            for (let star = 0; star <=line *2; star++){
+                document.write(`*`)
+            }
+            document.write(`<br/>`)
+        }
+
+
+    </script>
+</body>
+</html>

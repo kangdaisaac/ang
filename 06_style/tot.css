@@ -1,0 +1,13 @@
+/* 
+main{
+    background-color: #afa;
+} */
+
+/* import 는 스타일 지정보다 상단에 위치해야 */
+@import "../qwer/aaa.css"; /* ; 명령문 종결 표시 */
+@import "../fff/bbb.css";
+
+
+main{
+    background-color: #afa;
+}

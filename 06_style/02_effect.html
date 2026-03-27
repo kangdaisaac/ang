@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_effect</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+        width: 1000px;
+        height: 400px;
+        background-color: #ffb;
+        margin: 10px;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            margin: 30px;
+            float: left;
+        }
+
+        .grd1{
+            background: linear-gradient(
+            135deg,
+            #ff1a00 0%,
+            #ff8c00 19%,
+            #faff00 35%,
+            #00ff11 51%,
+            #009dff 67%,
+            #3300ff 83%,
+            #ff00e9 100%);
+        }
+        .grd2{
+            background: radial-gradient(
+            ellipse at center,
+            rgba(255,26,0,1) 0%,
+            rgba(255,134,0,1) 18%,
+            rgba(255,140,0,0.93) 19%,
+            rgba(251,241,0,0) 33%,
+            rgba(250,255,0,0) 35%,
+            rgba(47,255,14,0) 48%,
+            rgba(0,255,17,0.2) 51%,
+            rgba(0,182,196,1) 63%,
+            rgba(0,157,255,1) 67%,
+            rgba(22,88,255,1) 74%,
+            rgba(51,0,255,0.18) 83%,
+            rgba(75,0,252,0) 85%,
+            rgba(255,0,233,1) 100%);
+        }
+        .grd3{
+            background: linear-gradient(
+                120deg, 
+                rgba(30,87,153,1) 0%,
+                rgba(125,185,232,0) 100%);
+        }
+
+        .sh1{
+            background-color: #fff;
+            box-shadow: 20px 5px 12px #333;
+                    /*  좌    위  퍼짐    색   */
+        }
+        .sh2{
+            background-color: #fff;
+            box-shadow: -10px -5px 12px #00f;
+                    /*  좌    위  퍼짐    색   */
+        }
+        .sh3{
+            background-color: #fff;
+            box-shadow: 20px 0px 0px #f00;
+            box-shadow: 0px 20px 0px #0f0;
+                    /*  2개를 넣기 위해서는 box-shadow 1개에 넣어야 */
+        }
+        .sh4{
+            background-color: #fff;
+            box-shadow: 20px 0px 0px #f00,
+                        -20px 0px 0px #0f0,
+                        -30px 0px 0px #00f;
+        }
+        .sh5{
+            background-color: #fff;
+            box-shadow: 10px 0px 0px #f00,
+                        0px 10px 0px #0f0,
+                        -10px 0px 0px #00f,
+                        0px -10px 0px #ff0,
+                        -10px -10px 0px #0ff,
+                        -10px 10px 0px #f0f,
+                        10px -10px 0px #000,
+                        10px 10px 0px #666,
+                        -10px -10px 0px #aaf;
+        }
+
+        .ii1{
+            background-color: #fff;
+            box-shadow: inset 5px 5px 5px #333;
+                /* 안쪽 그림자/ 좌  위  퍼짐   색 */
+        }
+        .ii2{
+            background-color: #fff;
+            box-shadow: inset 5px 5px 0px #f33,
+                        inset 0px -5px 0px #3f3,
+                        inset 5px 0px 0px #33f,
+                        inset 0px -5px 0px #f3f,
+                        inset -5px 0px 0px #ff3;
+        }
+        .ii3{
+            border: none;
+            background-color: #f33;
+            border-radius: 50px;
+            box-shadow: 
+            inset 5px 5px 10px #fff,
+            inset -5px -5px 10px #833,
+            5px 5px 10px #000;
+        }
+
+        .ss1{
+            box-sizing: content-box; /* 기본 값 */
+            background-color: #fff;
+            border: 10px solid #f00;
+            padding: 5px;
+        }
+
+        .ss2{
+            box-sizing: border-box; 
+            /* border, padding 을 객체 안에 배치 - 자리를 차지 하지 않음
+               border, padding 을 객체 밖에 배치 - 자리를 차지 (기본값) */
+            background-color: #fff;
+            border: 10px solid #f00;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>02_effect</h1>
+    <h2>gradient</h2>
+    <div class="wrapper">
+        <div class="box grd1">grd1</div>
+        <div class="box grd2">grd2</div>
+        <div class="box grd3">grd3</div>
+    </div>
+
+    <h2>shadow</h2>
+    <div class="wrapper">
+        <div class="box sh1">그림자1</div>
+        <div class="box sh2">그림자2</div>
+        <div class="box sh3">그림자3</div>
+        <div class="box sh4">그림자4</div>
+        <div class="box sh5">그림자5</div>
+    </div>
+
+    <h2>inset</h2>
+    <div class="wrapper">
+        <div class="box ii1">inset1</div>
+        <div class="box ii2">inset2</div>
+        <div class="box ii3">inset3</div>
+        <div class="box ii4">inset4</div>
+        <div class="box ii5">inset5</div>
+    </div>
+
+    <h2>box-sizing</h2>
+    <div class="wrapper">
+        <div class="box ss1">사이징1</div>
+        <div class="box ss2">사이징2</div>
+        <div class="box ss3">사이징3</div>
+        <div class="box ss4">사이징4</div>
+    </div>
+</body>
+</html>

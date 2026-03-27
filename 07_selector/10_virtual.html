@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10_virtual</title>
+    <style>
+        .box{
+            width: 50px;
+            height: 100px;
+            border: 1px solid #ccc
+        }
+        .bbb::before{   /* html에 가상으로 추가 - bbb 앞에 위치
+            
+            <div class= "box bbb">
+                ::before -> 추가되는 위치
+                "비비비"
+                </div>
+                
+                */
+            content: "비포임니다";  /* 추가되는 내용 */
+            width: 100px;
+            height: 20px;
+            background-color: #ffa;
+            display: block;
+        }
+        .ccc:hover::before{   /* html에 가상으로 추가 - ccc 앞에 위치 */
+            content: " hover 비포임니다";  /* 추가되는 내용 */
+            width: 100px;
+            height: 20px;
+            background-color: #faa;
+            display: block;
+        }
+        .aaa::after{   /* html에 가상으로 추가 - aaa 뒤에 위치 */
+            content: "애프타 임니다";  /* 추가되는 내용 */
+            width: 100px;
+            height: 20px;
+            background-color: #afa;
+            display: block;
+        }
+        ul{
+            margin-left: 100px;
+        }
+        li::marker{
+            content: "★☆";
+        }
+
+        .ddd{
+            width: 100px;
+            height: 200px;
+            background-color: #aff;
+            counter-reset: qwer 5; /* qwer 변수명
+                                        5  초기값 */
+        }
+        .ddd>p::before{
+            counter-increment: qwer 10; /* 10 증가량 */
+            content: counter(qwer) "번 ";
+        }
+
+        .eee>p::before{ /* attr : 태그 속성을 가져옴 */
+            content: attr(asdf) " 수상자 ";
+        }
+
+    </style>
+</head>
+<body>
+    <h1>10_virtual</h1>
+    <div class="box aaa">aaa</div>
+    <div class="box bbb">비비비</div>
+    <div class="box ccc">ccc</div>
+
+    <ul>
+        <li>피카추</li>
+        <li>라이추</li>
+        <li>파이리</li>
+        <li>꼬북스</li>
+    </ul>
+
+    <div class="ddd">
+        <p>문단단</p>
+        <p>문단단</p>
+        <p>문단단</p>
+        <p>문단단</p>
+        <p>문단단</p>
+    </div>
+    
+    <div class="eee">
+        <p asdf="금메달"> 김요나</p>
+        <p asdf="은메달"> 박새리</p>
+        <p asdf="동메달"> 차뱀근</p>
+        
+    </div>
+</body>
+</html>

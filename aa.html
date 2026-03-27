@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚾ 숫자야구 리그 FINAL EXTENDED</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root{
+            --team-main: #64748b;
+            --team-sub: #cbd5e1;
+            --bg1: #020617;
+            --bg2: #0f172a;
+            --panel: rgba(255,255,255,0.07);
+            --line: rgba(255,255,255,0.12);
+            --soft: #cbd5e1;
+            --glow: rgba(255,255,255,0.15);
+        }
+
+        @keyframes pulseGlow{
+            0%{ box-shadow: 0 0 0 rgba(255,255,255,0); }
+            50%{ box-shadow: 0 0 18px var(--glow); }
+            100%{ box-shadow: 0 0 0 rgba(255,255,255,0); }
+        }
+
+        @keyframes slideUp{
+            0%{ transform: translateY(10px); opacity: 0; }
+            100%{ transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes popIn{
+            0%{ transform: scale(0.97); opacity: 0; }
+            100%{ transform: scale(1); opacity: 1; }
+        }
+
+        body{
+            font-family: "Malgun Gothic", sans-serif;
+            background:
+                radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 22%),
+                linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+            color: #fff;
+            padding: 20px 12px 40px;
+        }
+
+        .wrapper{
+            width: 1220px;
+            max-width: 100%;
+            margin: 0 auto;
+            animation: popIn 0.4s ease;
+        }
+
+        .titleBox{
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .titleBox h1{
+            font-size: 40px;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .titleBox p{
+            color: var(--soft);
+            line-height: 1.8;
+        }
+
+        .topBar{
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .btn{
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            height: 48px;
+            padding: 0 16px;
+            transition: 0.2s;
+        }
+
+        .btn:hover{
+            transform: translateY(-1px);
+        }
+
+        .modeBtn{
+            background-color: #1d4ed8;
+            color: #fff;
+        }
+
+        .off{
+            background-color: #334155 !important;
+            color: #cbd5e1 !important;
+        }
+
+        #resetBtn{
+            background-color: #ef4444;
+            color: #fff;
+        }
+
+        .teamSelectBox,
+        .difficultyBox,
+        .soloBox,
+        .vsBox,
+        .panel,
+        .setupBox,
+        .playBox,
+        .commentary,
+        .recordBox,
+        .tipsBox{
+            background-color: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 16px;
+            backdrop-filter: blur(4px);
+        }
+
+        .teamSelectBox,
+        .difficultyBox,
+        .soloBox,
+        .vsBox,
+        .commentary,
+        .recordBox,
+        .tipsBox{
+            margin-bottom: 16px;
+        }
+
+        .teamSelectBox h3,
+        .difficultyBox h3,
+        .soloBox h3,
+        .vsBox h3,
+        .panel h3,
+        .setupBox h3,
+        .playBox h3,
+        .tipsBox h3{
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .teamGrid{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .teamCard{
+            background-color: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 14px;
+        }
+
+        .teamCard h4{
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .teamRow{
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        select,
+        input{
+            flex: 1;
+            min-width: 180px;
+            height: 50px;
+            border: none;
+            border-radius: 12px;
+            padding: 0 14px;
+            font-size: 17px;
+            outline: none;
+        }
+
+        .smallBtn{
+            background-color: #0ea5e9;
+            color: #fff;
+            height: 46px;
+        }
+
+        .difficultyBtns{
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .diffBtn{
+            background-color: #1e293b;
+            color: #fff;
+        }
+
+        .diffBtn.active{
+            background-color: var(--team-main);
+            color: #fff;
+            animation: pulseGlow 1.2s ease infinite;
+        }
+
+        .soloTop{
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 16px;
+        }
+
+        .soloResultBig{
+            min-height: 170px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+            border: 2px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 18px;
+        }
+
+        .soloResultBig .label{
+            color: var(--soft);
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .soloResultBig .value{
+            font-size: 34px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .soloMiniInfo{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .soloInfoCard{
+            background-color: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .soloInfoCard .miniLabel{
+            color: var(--soft);
+            margin-bottom: 8px;
+        }
+
+        .soloInfoCard .miniValue{
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .soloBoard{
+            background: linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.8));
+            border: 3px solid var(--team-main);
+            border-radius: 18px;
+            padding: 14px;
+            margin-top: 16px;
+        }
+
+        .soloBoardTitle,
+        .vsBoardTitle{
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        .badge{
+            background-color: var(--team-main);
+            color: #fff;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-weight: bold;
+        }
+
+        .soloBoardGrid{
+            display: grid;
+            grid-template-columns: 220px repeat(9, 1fr) 90px;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+
+        .soloBoardGrid div,
+        .vsBoardGrid div{
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid #334155;
+            border-bottom: 1px solid #334155;
+            text-align: center;
+            padding: 8px;
+            font-family: Consolas, "Courier New", monospace;
+            letter-spacing: 1px;
+        }
+
+        .inningHead{
+            background-color: #1e293b;
+            font-weight: bold;
+            color: #f8fafc;
+        }
+
+        .teamCell{
+            background-color: #0f172a;
+            font-weight: bold;
+        }
+
+        .scoreCell{
+            background-color: #111827;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .highlightCell{
+            background-color: var(--team-main) !important;
+            color: #fff !important;
+            animation: pulseGlow 0.8s ease;
+        }
+
+        .soloInputArea,
+        .vsInputArea{
+            margin-top: 16px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .row{
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        #soloCheckBtn,
+        #vsCheckBtn{
+            background-color: #f59e0b;
+            color: #111827;
+        }
+
+        #setSecretBtn{
+            background-color: #22c55e;
+            color: #052e16;
+        }
+
+        .message{
+            min-height: 30px;
+            margin-top: 8px;
+            line-height: 1.7;
+            font-weight: bold;
+            color: #fde68a;
+        }
+
+        .vsHeader{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .panel p{
+            line-height: 1.9;
+            color: #e2e8f0;
+        }
+
+        .big{
+            font-size: 21px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .vsBoard{
+            background: linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.8));
+            border: 3px solid var(--team-main);
+            border-radius: 18px;
+            padding: 14px;
+            margin-bottom: 16px;
+        }
+
+        .vsBoardGrid{
+            display: grid;
+            grid-template-columns: 190px repeat(12, 1fr) 85px;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+
+        .commentary{
+            line-height: 1.9;
+            animation: slideUp 0.3s ease;
+        }
+
+        .commentary .line{
+            margin-bottom: 6px;
+        }
+
+        .statusFlash{
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 8px;
+            background-color: rgba(255,255,255,0.06);
+            animation: pulseGlow 1.2s ease;
+        }
+
+        .recordHead,
+        .recordRow{
+            display: grid;
+            grid-template-columns: 70px 170px 120px 1fr;
+        }
+
+        .recordHead{
+            background-color: var(--team-main);
+            font-weight: bold;
+        }
+
+        .recordHead div,
+        .recordRow div{
+            padding: 12px 10px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            border-right: 1px solid rgba(255,255,255,0.12);
+            text-align: center;
+        }
+
+        .recordHead div:last-child,
+        .recordRow div:last-child{
+            border-right: none;
+        }
+
+        .recordRow{
+            animation: slideUp 0.22s ease;
+        }
+
+        .recordRow:nth-child(even){
+            background-color: rgba(255,255,255,0.04);
+        }
+
+        .recordTag{
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background-color: rgba(255,255,255,0.08);
+            font-size: 13px;
+        }
+
+        .homeRun{
+            color: #facc15;
+            font-weight: bold;
+            text-shadow: 0 0 12px rgba(250,204,21,0.45);
+        }
+
+        .outStyle{
+            color: #93c5fd;
+            font-weight: bold;
+        }
+
+        .win{ color: #86efac; font-weight: bold; }
+        .lose{ color: #fca5a5; font-weight: bold; }
+        .draw{ color: #fde68a; font-weight: bold; }
+
+        .hide{
+            display: none !important;
+        }
+
+        .tipsBox p{
+            line-height: 1.9;
+            color: var(--soft);
+        }
+
+        @media (max-width: 1120px){
+            .soloTop,
+            .vsHeader,
+            .teamGrid{
+                grid-template-columns: 1fr;
+            }
+
+            .soloBoardGrid{
+                grid-template-columns: 130px repeat(9, 1fr) 60px;
+                font-size: 12px;
+            }
+
+            .vsBoardGrid{
+                grid-template-columns: 125px repeat(12, 1fr) 62px;
+                font-size: 12px;
+            }
+
+            .recordHead,
+            .recordRow{
+                grid-template-columns: 55px 105px 80px 1fr;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="titleBox">
+            <h1>⚾ 숫자야구 리그 FINAL EXTENDED ⚾</h1>
+            <p>
+                혼자 하기는 9회 챌린지, 대결 모드는 홈런 시 새 숫자로 이어지고 9회 동점이면 12회까지 연장전.
+            </p>
+        </div>
+
+        <div class="topBar">
+            <button id="soloBtn" class="btn modeBtn">🙋 혼자 하기</button>
+            <button id="vsBtn" class="btn modeBtn off">🏟️ 대결 모드</button>
+            <button id="resetBtn" class="btn">🔄 새 경기</button>
+        </div>
+
+        <div class="teamSelectBox">
+            <h3>🏷️ 팀 선택</h3>
+            <div class="teamGrid">
+                <div class="teamCard">
+                    <h4>🙋 플레이어 팀</h4>
+                    <div class="teamRow">
+                        <select id="playerTeamSelect"></select>
+                        <button class="btn smallBtn" id="randomPlayerTeamBtn">랜덤</button>
+                    </div>
+                </div>
+                <div class="teamCard">
+                    <h4>🤖 컴퓨터 팀</h4>
+                    <div class="teamRow">
+                        <select id="computerTeamSelect"></select>
+                        <button class="btn smallBtn" id="randomComputerTeamBtn">랜덤</button>
+                    </div>
+                </div>
+            </div>
+            <div class="message" id="teamMessage"></div>
+        </div>
+
+        <div class="difficultyBox">
+            <h3>🧠 컴퓨터 난이도</h3>
+            <p>대결 모드에서만 적용됨</p>
+            <div class="difficultyBtns">
+                <button class="btn diffBtn active" data-level="normal">🙂 보통</button>
+                <button class="btn diffBtn" data-level="hard">😈 강함</button>
+                <button class="btn diffBtn" data-level="crazy">💀 미친놈</button>
+            </div>
+        </div>
+
+        <div id="soloModeArea">
+            <div class="soloBox">
+                <h3>🎯 혼자 하기 챌린지</h3>
+
+                <div class="soloTop">
+                    <div>
+                        <div class="soloResultBig">
+                            <div class="label">현재 판정</div>
+                            <div class="value" id="soloBigResult">플레이 볼!</div>
+                        </div>
+
+                        <div class="soloMiniInfo">
+                            <div class="soloInfoCard">
+                                <div class="miniLabel">남은 기회</div>
+                                <div class="miniValue" id="soloRemain">9</div>
+                            </div>
+                            <div class="soloInfoCard">
+                                <div class="miniLabel">현재 점수</div>
+                                <div class="miniValue" id="soloRunView">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>🙋 플레이어 정보</h3>
+                        <p>팀 : <span class="big" id="soloPlayerTeamText">선택 안 됨</span></p>
+                        <p>현재 상태 : <span class="big" id="soloStatus">도전 시작</span></p>
+                        <p>진행 회차 : <span class="big" id="soloTurnText">0</span> / 9</p>
+                        <p>최종 결과 : <span class="big" id="soloFinalResult">진행 중</span></p>
+                    </div>
+                </div>
+
+                <div class="soloBoard">
+                    <div class="soloBoardTitle">
+                        <h3>📟 솔로 전광판</h3>
+                        <div class="badge" id="soloBadge">1인 챌린지</div>
+                    </div>
+
+                    <div class="soloBoardGrid">
+                        <div class="inningHead">TEAM</div>
+                        <div class="inningHead">1</div>
+                        <div class="inningHead">2</div>
+                        <div class="inningHead">3</div>
+                        <div class="inningHead">4</div>
+                        <div class="inningHead">5</div>
+                        <div class="inningHead">6</div>
+                        <div class="inningHead">7</div>
+                        <div class="inningHead">8</div>
+                        <div class="inningHead">9</div>
+                        <div class="inningHead">R</div>
+
+                        <div class="teamCell" id="soloBoardTeam">🙋 플레이어</div>
+                        <div class="scoreCell" id="s1">-</div>
+                        <div class="scoreCell" id="s2">-</div>
+                        <div class="scoreCell" id="s3">-</div>
+                        <div class="scoreCell" id="s4">-</div>
+                        <div class="scoreCell" id="s5">-</div>
+                        <div class="scoreCell" id="s6">-</div>
+                        <div class="scoreCell" id="s7">-</div>
+                        <div class="scoreCell" id="s8">-</div>
+                        <div class="scoreCell" id="s9">-</div>
+                        <div class="scoreCell" id="sR">0</div>
+                    </div>
+                </div>
+
+                <div class="soloInputArea">
+                    <div class="playBox">
+                        <h3>🥎 입력</h3>
+                        <div class="row">
+                            <input type="text" id="soloInput" maxlength="3" placeholder="상대 숫자 3자리 추리">
+                            <button class="btn" id="soloCheckBtn">타격!</button>
+                        </div>
+                        <div class="message" id="soloMessage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="vsModeArea" class="hide">
+            <div class="vsBox">
+                <h3>🏟️ 대결 모드</h3>
+
+                <div class="vsHeader">
+                    <div class="panel">
+                        <h3>🙋 플레이어</h3>
+                        <p>팀 : <span class="big" id="vsPlayerTeamText">선택 안 됨</span></p>
+                        <p>남은 기회 : <span class="big" id="vsUserRemain">9</span></p>
+                        <p>상태 : <span class="big" id="vsUserStatus">대기</span></p>
+                        <p>내 비밀 숫자 : <span class="big" id="vsUserSecretText">설정 전</span></p>
+                        <p>현재 점수 : <span class="big" id="vsUserRunView">0</span></p>
+                    </div>
+
+                    <div class="panel">
+                        <h3>🤖 컴퓨터</h3>
+                        <p>팀 : <span class="big" id="vsComTeamText">선택 안 됨</span></p>
+                        <p>남은 기회 : <span class="big" id="vsComRemain">9</span></p>
+                        <p>상태 : <span class="big" id="vsComStatus">대기</span></p>
+                        <p>난이도 : <span class="big" id="vsDifficultyText">🙂 보통</span></p>
+                        <p>현재 점수 : <span class="big" id="vsComRunView">0</span></p>
+                    </div>
+                </div>
+
+                <div class="vsBoard">
+                    <div class="vsBoardTitle">
+                        <h3>📟 VS 전광판</h3>
+                        <div class="badge" id="vsBadge">VS MATCH</div>
+                    </div>
+
+                    <div class="vsBoardGrid">
+                        <div class="inningHead">TEAM</div>
+                        <div class="inningHead">1</div>
+                        <div class="inningHead">2</div>
+                        <div class="inningHead">3</div>
+                        <div class="inningHead">4</div>
+                        <div class="inningHead">5</div>
+                        <div class="inningHead">6</div>
+                        <div class="inningHead">7</div>
+                        <div class="inningHead">8</div>
+                        <div class="inningHead">9</div>
+                        <div class="inningHead">10</div>
+                        <div class="inningHead">11</div>
+                        <div class="inningHead">12</div>
+                        <div class="inningHead">R</div>
+
+                        <div class="teamCell" id="uTeamCell">🙋 플레이어</div>
+                        <div class="scoreCell" id="u1">-</div>
+                        <div class="scoreCell" id="u2">-</div>
+                        <div class="scoreCell" id="u3">-</div>
+                        <div class="scoreCell" id="u4">-</div>
+                        <div class="scoreCell" id="u5">-</div>
+                        <div class="scoreCell" id="u6">-</div>
+                        <div class="scoreCell" id="u7">-</div>
+                        <div class="scoreCell" id="u8">-</div>
+                        <div class="scoreCell" id="u9">-</div>
+                        <div class="scoreCell" id="u10">-</div>
+                        <div class="scoreCell" id="u11">-</div>
+                        <div class="scoreCell" id="u12">-</div>
+                        <div class="scoreCell" id="uR">0</div>
+
+                        <div class="teamCell" id="cTeamCell">🤖 컴퓨터</div>
+                        <div class="scoreCell" id="c1">-</div>
+                        <div class="scoreCell" id="c2">-</div>
+                        <div class="scoreCell" id="c3">-</div>
+                        <div class="scoreCell" id="c4">-</div>
+                        <div class="scoreCell" id="c5">-</div>
+                        <div class="scoreCell" id="c6">-</div>
+                        <div class="scoreCell" id="c7">-</div>
+                        <div class="scoreCell" id="c8">-</div>
+                        <div class="scoreCell" id="c9">-</div>
+                        <div class="scoreCell" id="c10">-</div>
+                        <div class="scoreCell" id="c11">-</div>
+                        <div class="scoreCell" id="c12">-</div>
+                        <div class="scoreCell" id="cR">0</div>
+                    </div>
+                </div>
+
+                <div class="setupBox" style="margin-bottom:16px;">
+                    <h3>🔐 비밀 숫자 설정</h3>
+                    <div class="row">
+                        <input type="text" id="vsSecretInput" maxlength="3" placeholder="내 비밀 숫자 3자리 입력">
+                        <button class="btn" id="setSecretBtn">비밀 숫자 확정</button>
+                    </div>
+                    <div class="message" id="vsSetupMessage"></div>
+                </div>
+
+                <div class="vsInputArea">
+                    <div class="playBox">
+                        <h3>🥎 공격</h3>
+                        <div class="row">
+                            <input type="text" id="vsInput" maxlength="3" placeholder="상대 숫자 3자리 추리">
+                            <button class="btn" id="vsCheckBtn">타격!</button>
+                        </div>
+                        <div class="message" id="vsMessage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="commentary">
+            <div class="line">📣 중계 : <span id="gameComment" class="statusFlash">경기 시작 전입니다.</span></div>
+            <div class="line">🎺 응원 : <span id="cheerText">관중들이 숨을 죽이고 지켜봅니다.</span></div>
+            <div class="line">🧮 진행 상황 : <span id="globalTurnText">0</span></div>
+            <div class="line">🏁 결과 : <span id="globalFinalText">진행 중</span></div>
+            <div class="line">📊 리드 : <span id="globalLeadText">-</span></div>
+        </div>
+
+        <div class="recordBox">
+            <h3 style="margin-bottom:10px;">📋 경기 기록</h3>
+            <div class="recordHead">
+                <div>회차</div>
+                <div>주체</div>
+                <div>입력</div>
+                <div>결과</div>
+            </div>
+            <div id="recordList"></div>
+        </div>
+
+        <div class="tipsBox">
+            <h3>📝 게임 규칙</h3>
+            <p>
+                - 혼자 하기는 9회 안에 정답을 맞히는 1인 챌린지 모드<br>
+                - 대결 모드는 홈런이 나오면 1점을 얻고 상대 비밀 숫자가 즉시 새로 바뀜<br>
+                - 컴퓨터가 홈런을 치면 네가 새 비밀 숫자를 다시 입력해야 다음 회차 진행 가능<br>
+                - 9회 종료 시 점수가 다르면 그대로 승부 결정<br>
+                - 9회 종료 시 동점이면 10회~12회 연장전 진입<br>
+                - 연장전에서는 먼저 홈런을 치는 쪽이 즉시 승리
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const SOLO_MAX_TURN = 9;
+        const VS_REGULAR_MAX = 9;
+        const VS_EXTRA_MAX = 12;
+
+        const KBO_TEAMS = [
+            "LG 트윈스","한화 이글스","SSG 랜더스","삼성 라이온즈","NC 다이노스",
+            "KT 위즈","롯데 자이언츠","KIA 타이거즈","두산 베어스","키움 히어로즈"
+        ];
+
+        const TEAM_STYLES = {
+            "LG 트윈스": { main: "#a50034", sub: "#d1d5db", cheer: ["쌍둥이 군단 출격!", "LG의 흐름이 몰아친다!", "한 방이면 분위기 역전!"] },
+            "한화 이글스": { main: "#f37321", sub: "#111827", cheer: ["독수리 군단 상승기류!", "이글스의 기세가 거세진다!", "하늘로 치솟는 분위기!"] },
+            "SSG 랜더스": { main: "#c8102e", sub: "#facc15", cheer: ["랜더스 출격!", "붉은 기세가 타석을 집어삼킨다!", "인천의 열기가 흐른다!"] },
+            "삼성 라이온즈": { main: "#1f5fbf", sub: "#dbeafe", cheer: ["푸른 사자의 포효!", "라이온즈의 흐름이 날카롭다!", "사자의 눈빛이 번뜩인다!"] },
+            "NC 다이노스": { main: "#315288", sub: "#cbd5e1", cheer: ["다이노스의 압박이 시작됐다!", "묵직한 기세가 다가온다!", "조용하지만 강하게!"] },
+            "KT 위즈": { main: "#111111", sub: "#ff0000", cheer: ["위즈의 마법이 걸린다!", "수원의 리듬이 상대를 흔든다!", "조용히, 그러나 치명적으로!"] },
+            "롯데 자이언츠": { main: "#041e42", sub: "#84cc16", cheer: ["부산의 파도가 몰려온다!", "자이언츠 출격!", "사직의 함성이 울린다!"] },
+            "KIA 타이거즈": { main: "#ea0029", sub: "#111827", cheer: ["호랑이의 발톱이 드러난다!", "광주의 열기가 달군다!", "타이거즈 한 방 조심!"] },
+            "두산 베어스": { main: "#131230", sub: "#d1d5db", cheer: ["곰 군단 전진!", "묵직하게 밀어붙인다!", "베어스의 끈기가 살아난다!"] },
+            "키움 히어로즈": { main: "#6b0f1a", sub: "#e5e7eb", cheer: ["히어로즈 등장!", "영웅이 되는 순간이다!", "기회를 잡으면 안 놓친다!"] }
+        };
+
+        let mode = "solo";
+        let difficulty = "normal";
+
+        let playerTeamName = "롯데 자이언츠";
+        let computerTeamName = "LG 트윈스";
+
+        let soloGame = {};
+        let vsGame = {};
+
+        const soloBtn = document.getElementById("soloBtn");
+        const vsBtn = document.getElementById("vsBtn");
+        const resetBtn = document.getElementById("resetBtn");
+
+        const playerTeamSelect = document.getElementById("playerTeamSelect");
+        const computerTeamSelect = document.getElementById("computerTeamSelect");
+        const randomPlayerTeamBtn = document.getElementById("randomPlayerTeamBtn");
+        const randomComputerTeamBtn = document.getElementById("randomComputerTeamBtn");
+        const teamMessage = document.getElementById("teamMessage");
+
+        const diffBtns = document.querySelectorAll(".diffBtn");
+
+        const soloModeArea = document.getElementById("soloModeArea");
+        const vsModeArea = document.getElementById("vsModeArea");
+
+        const recordList = document.getElementById("recordList");
+        const gameComment = document.getElementById("gameComment");
+        const cheerText = document.getElementById("cheerText");
+        const globalTurnText = document.getElementById("globalTurnText");
+        const globalFinalText = document.getElementById("globalFinalText");
+        const globalLeadText = document.getElementById("globalLeadText");
+
+        function fillTeamSelects(){
+            playerTeamSelect.innerHTML = "";
+            computerTeamSelect.innerHTML = "";
+
+            for(let team of KBO_TEAMS){
+                playerTeamSelect.innerHTML += `<option value="${team}">${team}</option>`;
+                computerTeamSelect.innerHTML += `<option value="${team}">${team}</option>`;
+            }
+
+            playerTeamSelect.value = playerTeamName;
+            computerTeamSelect.value = computerTeamName;
+        }
+
+        function randomTeam(exceptTeam = ""){
+            let list = KBO_TEAMS.filter(team => team !== exceptTeam);
+            return list[parseInt(Math.random() * list.length)];
+        }
+
+        function validateTeams(){
+            playerTeamName = playerTeamSelect.value;
+            computerTeamName = computerTeamSelect.value;
+
+            if(playerTeamName === computerTeamName){
+                teamMessage.innerText = "❗ 플레이어 팀과 컴퓨터 팀은 서로 달라야 합니다.";
+                return false;
+            }
+
+            teamMessage.innerText = "✅ 팀 선택 완료!";
+            return true;
+        }
+
+        function parseInput(value){
+            if(value.length !== 3) return null;
+
+            let a = parseInt(value.charAt(0));
+            let b = parseInt(value.charAt(1));
+            let c = parseInt(value.charAt(2));
+
+            if(isNaN(a) || isNaN(b) || isNaN(c)) return null;
+            if(a === 0 || b === 0 || c === 0) return null;
+            if(a === b || b === c || a === c) return null;
+
+            return [a, b, c];
+        }
+
+        function makeSecretNumber(){
+            while(true){
+                let a = parseInt(Math.random() * 9) + 1;
+                let b = parseInt(Math.random() * 9) + 1;
+                let c = parseInt(Math.random() * 9) + 1;
+                if(a !== b && b !== c && a !== c){
+                    return [a, b, c];
+                }
+            }
+        }
+
+        function judge(guess, secret){
+            let strike = 0;
+            let ball = 0;
+
+            if(guess[0] === secret[0]) strike++;
+            if(guess[1] === secret[1]) strike++;
+            if(guess[2] === secret[2]) strike++;
+
+            if(guess[0] === secret[1] || guess[0] === secret[2]) ball++;
+            if(guess[1] === secret[0] || guess[1] === secret[2]) ball++;
+            if(guess[2] === secret[0] || guess[2] === secret[1]) ball++;
+
+            return { strike, ball, out: 3 - strike - ball };
+        }
+
+        function resultHTML(result){
+            if(result.strike === 3) return `<span class="homeRun">💥 3스트라이크 홈런!</span>`;
+            if(result.strike === 0 && result.ball === 0) return `<span class="outStyle">🥶 아웃!</span>`;
+            return `⚾ ${result.strike}S ${result.ball}B ${result.out}O`;
+        }
+
+        function resultPlain(result){
+            if(result.strike === 3) return "💥 3스트라이크 홈런!";
+            if(result.strike === 0 && result.ball === 0) return "🥶 아웃!";
+            return `⚾ ${result.strike}S ${result.ball}B ${result.out}O`;
+        }
+
+        function runsFromResult(result){
+            return result.strike === 3 ? 1 : 0;
+        }
+
+        function applyThemeByComputerTeam(){
+            let style = TEAM_STYLES[computerTeamName];
+            document.documentElement.style.setProperty("--team-main", style.main);
+            document.documentElement.style.setProperty("--team-sub", style.sub);
+            document.documentElement.style.setProperty("--glow", style.main + "66");
+            refreshCheer();
+        }
+
+        function refreshCheer(){
+            let arr = TEAM_STYLES[computerTeamName].cheer;
+            cheerText.innerText = arr[parseInt(Math.random() * arr.length)];
+        }
+
+        function setComment(text){
+            gameComment.innerText = text;
+            gameComment.classList.remove("statusFlash");
+            void gameComment.offsetWidth;
+            gameComment.classList.add("statusFlash");
+        }
+
+        function addRecord(turn, who, inputValue, html){
+            recordList.innerHTML += `
+                <div class="recordRow">
+                    <div>${turn}</div>
+                    <div><span class="recordTag">${who}</span></div>
+                    <div>${inputValue}</div>
+                    <div>${html}</div>
+                </div>
+            `;
+        }
+
+        function setBoardCell(id, value){
+            const cell = document.getElementById(id);
+            cell.innerText = value;
+            cell.classList.add("highlightCell");
+            setTimeout(() => cell.classList.remove("highlightCell"), 700);
+        }
+
+        function updateDifficultyText(){
+            const txt = difficulty === "normal" ? "🙂 보통" : difficulty === "hard" ? "😈 강함" : "💀 미친놈";
+            document.getElementById("vsDifficultyText").innerText = txt;
+        }
+
+        function buildAllCandidates(){
+            vsGame.candidates = [];
+            for(let a = 1; a <= 9; a++){
+                for(let b = 1; b <= 9; b++){
+                    for(let c = 1; c <= 9; c++){
+                        if(a !== b && b !== c && a !== c){
+                            vsGame.candidates.push([a, b, c]);
+                        }
+                    }
+                }
+            }
+        }
+
+        function filterCandidates(lastGuess, lastResult){
+            let newList = [];
+            for(let test of vsGame.candidates){
+                let r = judge(lastGuess, test);
+                if(r.strike === lastResult.strike && r.ball === lastResult.ball){
+                    newList.push(test);
+                }
+            }
+            vsGame.candidates = newList;
+        }
+
+        function scoreGuessAgainstCandidates(guess){
+            let map = {};
+            for(let cand of vsGame.candidates){
+                let r = judge(guess, cand);
+                let key = r.strike + "-" + r.ball;
+                map[key] = (map[key] || 0) + 1;
+            }
+
+            let worst = 0;
+            let kinds = 0;
+            for(let key in map){
+                kinds++;
+                if(map[key] > worst) worst = map[key];
+            }
+            return { worst, kinds };
+        }
+
+        function pickBestGuess(){
+            let bestGuess = vsGame.candidates[0];
+            let bestWorst = 999999;
+            let bestKinds = -1;
+
+            for(let guess of vsGame.candidates){
+                let scored = scoreGuessAgainstCandidates(guess);
+                if(scored.worst < bestWorst){
+                    bestWorst = scored.worst;
+                    bestKinds = scored.kinds;
+                    bestGuess = guess;
+                }else if(scored.worst === bestWorst && scored.kinds > bestKinds){
+                    bestKinds = scored.kinds;
+                    bestGuess = guess;
+                }
+            }
+
+            return bestGuess;
+        }
+
+        function makeComputerGuess(){
+            if(vsGame.candidates.length <= 0) return makeSecretNumber();
+
+            if(difficulty === "normal"){
+                if(!vsGame.openedWith123){
+                    vsGame.openedWith123 = true;
+                    return [1,2,3];
+                }
+                return vsGame.candidates[parseInt(Math.random() * vsGame.candidates.length)];
+            }
+
+            if(difficulty === "hard"){
+                if(!vsGame.openedWith123){
+                    vsGame.openedWith123 = true;
+                    return [1,2,3];
+                }
+                if(vsGame.candidates.length > 12) return vsGame.candidates[0];
+                return pickBestGuess();
+            }
+
+            if(!vsGame.openedWith123){
+                vsGame.openedWith123 = true;
+                return [1,2,3];
+            }
+            return pickBestGuess();
+        }
+
+        function resetSoloBoard(){
+            for(let i = 1; i <= 9; i++) document.getElementById("s" + i).innerText = "-";
+            document.getElementById("sR").innerText = "0";
+        }
+
+        function resetVsBoard(){
+            for(let i = 1; i <= 12; i++){
+                document.getElementById("u" + i).innerText = "-";
+                document.getElementById("c" + i).innerText = "-";
+            }
+            document.getElementById("uR").innerText = "0";
+            document.getElementById("cR").innerText = "0";
+        }
+
+        function totalBoard(prefix, maxTurn){
+            let total = 0;
+            for(let i = 1; i <= maxTurn; i++){
+                let v = document.getElementById(prefix + i).innerText;
+                if(v !== "-" && v !== "") total += parseInt(v);
+            }
+            document.getElementById(prefix + "R").innerText = total;
+        }
+
+        function startSolo(){
+            if(!validateTeams()) return;
+
+            mode = "solo";
+            soloModeArea.classList.remove("hide");
+            vsModeArea.classList.add("hide");
+            soloBtn.classList.remove("off");
+            vsBtn.classList.add("off");
+
+            applyThemeByComputerTeam();
+            recordList.innerHTML = "";
+
+            soloGame = {
+                over: false,
+                turn: 0,
+                secret: makeSecretNumber()
+            };
+
+            resetSoloBoard();
+
+            document.getElementById("soloPlayerTeamText").innerText = playerTeamName;
+            document.getElementById("soloBoardTeam").innerText = "🙋 " + playerTeamName;
+            document.getElementById("soloBigResult").innerText = "플레이 볼!";
+            document.getElementById("soloStatus").innerText = "도전 시작";
+            document.getElementById("soloTurnText").innerText = "0";
+            document.getElementById("soloRemain").innerText = SOLO_MAX_TURN;
+            document.getElementById("soloRunView").innerText = "0";
+            document.getElementById("soloFinalResult").innerText = "진행 중";
+            document.getElementById("soloInput").value = "";
+            document.getElementById("soloMessage").innerText = "";
+            document.getElementById("soloBadge").innerText = playerTeamName + " CHALLENGE";
+
+            globalTurnText.innerText = "0 / 9";
+            globalFinalText.innerText = "진행 중";
+            globalFinalText.className = "";
+            globalLeadText.innerText = playerTeamName + " 단독 플레이";
+
+            setComment(playerTeamName + "의 1인 챌린지가 시작된다.");
+            refreshCheer();
+            document.getElementById("soloInput").focus();
+        }
+
+        function playSolo(){
+            if(soloGame.over) return;
+
+            const input = document.getElementById("soloInput");
+            const message = document.getElementById("soloMessage");
+            let guess = parseInput(input.value.trim());
+
+            if(guess === null){
+                message.innerText = "❗ 1~9 사이 서로 다른 숫자 3자리를 입력하세요.";
+                return;
+            }
+
+            message.innerText = "";
+            soloGame.turn++;
+
+            let result = judge(guess, soloGame.secret);
+            let html = resultHTML(result);
+            let plain = resultPlain(result);
+
+            addRecord(soloGame.turn, "🙋 " + playerTeamName, guess.join(""), html);
+
+            document.getElementById("soloBigResult").innerHTML = html;
+            document.getElementById("soloStatus").innerText = plain;
+            document.getElementById("soloTurnText").innerText = soloGame.turn;
+            document.getElementById("soloRemain").innerText = SOLO_MAX_TURN - soloGame.turn;
+
+            setBoardCell("s" + soloGame.turn, runsFromResult(result));
+            totalBoard("s", 9);
+            document.getElementById("soloRunView").innerText = document.getElementById("sR").innerText;
+
+            globalTurnText.innerText = soloGame.turn + " / 9";
+            globalLeadText.innerText = playerTeamName + " 단독 플레이";
+
+            if(result.strike === 3){
+                soloGame.over = true;
+                document.getElementById("soloFinalResult").innerText = "승리";
+                globalFinalText.innerText = "🏆 승리!";
+                globalFinalText.className = "win";
+                setComment("쾅! " + playerTeamName + "의 끝내기 홈런!");
+                input.blur();
+                return;
+            }
+
+            if(result.strike === 0 && result.ball === 0){
+                setComment(playerTeamName + " 타선이 잠시 숨을 고른다.");
+            }else{
+                setComment(playerTeamName + "의 타격감이 올라오고 있다.");
+            }
+
+            if(soloGame.turn >= SOLO_MAX_TURN){
+                soloGame.over = true;
+                document.getElementById("soloFinalResult").innerText = "패배";
+                globalFinalText.innerText = "😭 패배!";
+                globalFinalText.className = "lose";
+                setComment("9회 종료! 정답은 " + soloGame.secret.join("") + "였다.");
+                input.blur();
+                return;
+            }
+
+            input.value = "";
+            input.focus();
+        }
+
+        function startVs(){
+            if(!validateTeams()) return;
+
+            mode = "vs";
+            soloModeArea.classList.add("hide");
+            vsModeArea.classList.remove("hide");
+            soloBtn.classList.add("off");
+            vsBtn.classList.remove("off");
+
+            applyThemeByComputerTeam();
+            recordList.innerHTML = "";
+
+            vsGame = {
+                over: false,
+                inning: 0,
+                userSecret: [],
+                userSecretFixed: false,
+                waitingForNewSecret: false,
+                comSecret: makeSecretNumber(),
+                candidates: [],
+                openedWith123: false,
+                inExtra: false
+            };
+
+            buildAllCandidates();
+            resetVsBoard();
+
+            document.getElementById("vsPlayerTeamText").innerText = playerTeamName;
+            document.getElementById("vsComTeamText").innerText = computerTeamName;
+            document.getElementById("uTeamCell").innerText = "🙋 " + playerTeamName;
+            document.getElementById("cTeamCell").innerText = "🤖 " + computerTeamName;
+            document.getElementById("vsUserRemain").innerText = VS_REGULAR_MAX;
+            document.getElementById("vsComRemain").innerText = VS_REGULAR_MAX;
+            document.getElementById("vsUserStatus").innerText = "비밀 숫자 설정 필요";
+            document.getElementById("vsComStatus").innerText = "경기 준비 중";
+            document.getElementById("vsUserSecretText").innerText = "설정 전";
+            document.getElementById("vsUserRunView").innerText = "0";
+            document.getElementById("vsComRunView").innerText = "0";
+            document.getElementById("vsSecretInput").value = "";
+            document.getElementById("vsInput").value = "";
+            document.getElementById("vsSetupMessage").innerText = "";
+            document.getElementById("vsMessage").innerText = "";
+            document.getElementById("vsBadge").innerText = playerTeamName + " VS " + computerTeamName;
+
+            globalTurnText.innerText = "0 / 9";
+            globalFinalText.innerText = "진행 중";
+            globalFinalText.className = "";
+            globalLeadText.innerText = "동점";
+
+            updateDifficultyText();
+            setComment(playerTeamName + " vs " + computerTeamName + " 경기 시작!");
+            refreshCheer();
+            document.getElementById("vsSecretInput").focus();
+        }
+
+        function confirmVsSecret(){
+            if(mode !== "vs" || vsGame.over) return;
+
+            const input = document.getElementById("vsSecretInput");
+            const msg = document.getElementById("vsSetupMessage");
+            let parsed = parseInput(input.value.trim());
+
+            if(parsed === null){
+                msg.innerText = "❗ 1~9 사이 서로 다른 숫자 3자리를 입력하세요.";
+                return;
+            }
+
+            vsGame.userSecret = parsed;
+            vsGame.userSecretFixed = true;
+            vsGame.waitingForNewSecret = false;
+            buildAllCandidates();
+            vsGame.openedWith123 = false;
+
+            document.getElementById("vsUserSecretText").innerText = "🔐 " + parsed.join("");
+            document.getElementById("vsUserStatus").innerText = "수비 준비 완료";
+            document.getElementById("vsComStatus").innerText = vsGame.inExtra ? "연장 승부 중" : "플레이 볼!";
+            msg.innerText = "✅ 비밀 숫자 설정 완료!";
+            setComment("비밀 숫자 준비 완료. 다음 회차 계속 진행!");
+            document.getElementById("vsInput").focus();
+        }
+
+        function updateVsLead(){
+            let u = parseInt(document.getElementById("uR").innerText);
+            let c = parseInt(document.getElementById("cR").innerText);
+
+            if(u > c){
+                globalLeadText.innerText = playerTeamName + " 리드";
+            }else if(u < c){
+                globalLeadText.innerText = computerTeamName + " 리드";
+            }else{
+                globalLeadText.innerText = "동점";
+            }
+        }
+
+        function finishVsByScore(){
+            vsGame.over = true;
+
+            let userRun = parseInt(document.getElementById("uR").innerText);
+            let comRun = parseInt(document.getElementById("cR").innerText);
+
+            if(userRun > comRun){
+                globalFinalText.innerText = "🏆 " + playerTeamName + " 승리!";
+                globalFinalText.className = "win";
+                setComment("경기 종료! " + playerTeamName + "가 전광판에서 앞섰다!");
+            }else if(userRun < comRun){
+                globalFinalText.innerText = "🤖 " + computerTeamName + " 승리!";
+                globalFinalText.className = "lose";
+                setComment("경기 종료! " + computerTeamName + "가 전광판에서 앞섰다.");
+            }else{
+                globalFinalText.innerText = "🤝 무승부!";
+                globalFinalText.className = "draw";
+                setComment("12회 종료! 끝내 승부를 가리지 못했다.");
+            }
+        }
+
+        function finishVsInstant(winner){
+            vsGame.over = true;
+
+            if(winner === "player"){
+                globalFinalText.innerText = "🏆 " + playerTeamName + " 연장 끝내기 승리!";
+                globalFinalText.className = "win";
+                setComment("연장전 끝! " + playerTeamName + "가 먼저 홈런을 터뜨리며 승리!");
+            }else{
+                globalFinalText.innerText = "🤖 " + computerTeamName + " 연장 끝내기 승리!";
+                globalFinalText.className = "lose";
+                setComment("연장전 끝! " + computerTeamName + "가 먼저 홈런을 터뜨리며 승리!");
+            }
+        }
+
+        function playVs(){
+            if(mode !== "vs" || vsGame.over) return;
+
+            if(!vsGame.userSecretFixed || vsGame.waitingForNewSecret){
+                document.getElementById("vsMessage").innerText = "❗ 먼저 새 비밀 숫자를 설정해야 한다.";
+                return;
+            }
+
+            const input = document.getElementById("vsInput");
+            const msg = document.getElementById("vsMessage");
+            let userGuess = parseInput(input.value.trim());
+
+            if(userGuess === null){
+                msg.innerText = "❗ 1~9 사이 서로 다른 숫자 3자리를 입력하세요.";
+                return;
+            }
+
+            msg.innerText = "";
+            vsGame.inning++;
+
+            let userResult = judge(userGuess, vsGame.comSecret);
+            addRecord(vsGame.inning, "🙋 " + playerTeamName, userGuess.join(""), resultHTML(userResult));
+            document.getElementById("vsUserStatus").innerHTML = resultHTML(userResult);
+            setBoardCell("u" + vsGame.inning, runsFromResult(userResult));
+            totalBoard("u", VS_EXTRA_MAX);
+
+            let userHomerun = userResult.strike === 3;
+            if(userHomerun){
+                vsGame.comSecret = makeSecretNumber();
+                console.log("새 컴퓨터 정답:", vsGame.comSecret.join(""));
+            }
+
+            if(vsGame.inExtra && userHomerun){
+                document.getElementById("vsUserRunView").innerText = document.getElementById("uR").innerText;
+                document.getElementById("vsComRunView").innerText = document.getElementById("cR").innerText;
+                globalTurnText.innerText = vsGame.inning + " / 12 (연장)";
+                updateVsLead();
+                finishVsInstant("player");
+                input.blur();
+                return;
+            }
+
+            let comGuess = makeComputerGuess();
+            let comResult = judge(comGuess, vsGame.userSecret);
+            addRecord(vsGame.inning, "🤖 " + computerTeamName, comGuess.join(""), resultHTML(comResult));
+            document.getElementById("vsComStatus").innerHTML = resultHTML(comResult);
+            setBoardCell("c" + vsGame.inning, runsFromResult(comResult));
+            totalBoard("c", VS_EXTRA_MAX);
+
+            let comHomerun = comResult.strike === 3;
+            if(comHomerun){
+                vsGame.userSecretFixed = false;
+                vsGame.waitingForNewSecret = true;
+                document.getElementById("vsUserSecretText").innerText = "새 숫자 입력 필요";
+                document.getElementById("vsSetupMessage").innerText = "⚠️ 컴퓨터가 홈런! 네 새 비밀 숫자를 다시 입력하세요.";
+                buildAllCandidates();
+                vsGame.openedWith123 = false;
+            }else{
+                filterCandidates(comGuess, comResult);
+            }
+
+            document.getElementById("vsUserRemain").innerText = Math.max(0, VS_REGULAR_MAX - vsGame.inning);
+            document.getElementById("vsComRemain").innerText = Math.max(0, VS_REGULAR_MAX - vsGame.inning);
+            document.getElementById("vsUserRunView").innerText = document.getElementById("uR").innerText;
+            document.getElementById("vsComRunView").innerText = document.getElementById("cR").innerText;
+
+            globalTurnText.innerText = vsGame.inExtra
+                ? vsGame.inning + " / 12 (연장)"
+                : vsGame.inning + " / 9";
+            updateVsLead();
+            refreshCheer();
+
+            if(vsGame.inExtra && comHomerun){
+                finishVsInstant("computer");
+                input.blur();
+                return;
+            }
+
+            if(userHomerun && comHomerun){
+                setComment("양 팀 모두 홈런! 서로 새 숫자로 다음 회차를 준비한다!");
+            }else if(userHomerun){
+                setComment(playerTeamName + " 홈런! 상대 숫자는 새로 생성됐다.");
+            }else if(comHomerun){
+                setComment(computerTeamName + " 홈런! 네 새 비밀 숫자를 입력해야 한다.");
+            }else if(userResult.strike > comResult.strike){
+                setComment("이번 회는 " + playerTeamName + "가 더 날카로웠다.");
+            }else if(userResult.strike < comResult.strike){
+                setComment("이번 회는 " + computerTeamName + "가 더 깊게 파고들었다.");
+            }else{
+                setComment("팽팽한 흐름이다. 다음 회가 중요하다.");
+            }
+
+            if(vsGame.inning === VS_REGULAR_MAX && !vsGame.inExtra){
+                let u = parseInt(document.getElementById("uR").innerText);
+                let c = parseInt(document.getElementById("cR").innerText);
+
+                if(u === c){
+                    vsGame.inExtra = true;
+                    setComment("9회 종료 동점! 연장 10회로 돌입한다. 이제 먼저 홈런 치는 팀이 승리!");
+                }else{
+                    finishVsByScore();
+                    input.blur();
+                    return;
+                }
+            }else if(vsGame.inning === VS_EXTRA_MAX && vsGame.inExtra){
+                finishVsByScore();
+                input.blur();
+                return;
+            }
+
+            input.value = "";
+            if(vsGame.waitingForNewSecret){
+                document.getElementById("vsSecretInput").focus();
+            }else{
+                input.focus();
+            }
+        }
+
+        diffBtns.forEach(function(btn){
+            btn.addEventListener("click", function(){
+                difficulty = btn.dataset.level;
+                diffBtns.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                updateDifficultyText();
+
+                if(mode === "vs"){
+                    startVs();
+                }
+            });
+        });
+
+        playerTeamSelect.addEventListener("change", function(){
+            validateTeams();
+            if(mode === "solo"){
+                document.getElementById("soloPlayerTeamText").innerText = playerTeamSelect.value;
+                document.getElementById("soloBoardTeam").innerText = "🙋 " + playerTeamSelect.value;
+            }else{
+                document.getElementById("vsPlayerTeamText").innerText = playerTeamSelect.value;
+                document.getElementById("uTeamCell").innerText = "🙋 " + playerTeamSelect.value;
+            }
+        });
+
+        computerTeamSelect.addEventListener("change", function(){
+            validateTeams();
+            applyThemeByComputerTeam();
+            if(mode === "vs"){
+                document.getElementById("vsComTeamText").innerText = computerTeamSelect.value;
+                document.getElementById("cTeamCell").innerText = "🤖 " + computerTeamSelect.value;
+            }
+        });
+
+        randomPlayerTeamBtn.addEventListener("click", function(){
+            playerTeamSelect.value = randomTeam(computerTeamSelect.value);
+            validateTeams();
+            if(mode === "solo"){
+                document.getElementById("soloPlayerTeamText").innerText = playerTeamSelect.value;
+                document.getElementById("soloBoardTeam").innerText = "🙋 " + playerTeamSelect.value;
+            }else{
+                document.getElementById("vsPlayerTeamText").innerText = playerTeamSelect.value;
+                document.getElementById("uTeamCell").innerText = "🙋 " + playerTeamSelect.value;
+            }
+        });
+
+        randomComputerTeamBtn.addEventListener("click", function(){
+            computerTeamSelect.value = randomTeam(playerTeamSelect.value);
+            validateTeams();
+            applyThemeByComputerTeam();
+            if(mode === "vs"){
+                document.getElementById("vsComTeamText").innerText = computerTeamSelect.value;
+                document.getElementById("cTeamCell").innerText = "🤖 " + computerTeamSelect.value;
+            }
+        });
+
+        soloBtn.addEventListener("click", startSolo);
+        vsBtn.addEventListener("click", startVs);
+
+        resetBtn.addEventListener("click", function(){
+            if(mode === "solo") startSolo();
+            else startVs();
+        });
+
+        document.getElementById("soloCheckBtn").addEventListener("click", playSolo);
+        document.getElementById("vsCheckBtn").addEventListener("click", playVs);
+        document.getElementById("setSecretBtn").addEventListener("click", confirmVsSecret);
+
+        document.getElementById("soloInput").addEventListener("keydown", function(e){
+            if(e.key === "Enter") playSolo();
+        });
+
+        document.getElementById("vsInput").addEventListener("keydown", function(e){
+            if(e.key === "Enter") playVs();
+        });
+
+        document.getElementById("vsSecretInput").addEventListener("keydown", function(e){
+            if(e.key === "Enter") confirmVsSecret();
+        });
+
+        fillTeamSelects();
+        validateTeams();
+        applyThemeByComputerTeam();
+        updateDifficultyText();
+        startSolo();
+    </script>
+</body>
+</html>

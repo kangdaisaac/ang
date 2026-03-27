@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_back</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            background-color: #eee;
+        }
+        .aaa{
+            width: 300px;
+        }
+        .box{
+            width: 300px;
+            height: 300px;
+            margin: 20px;
+            background-color: #ffa;
+            float: left;
+        }
+        h3{
+            clear: both; /* float 무력화
+                            lefet, right, both(left + right */
+        }
+        .box > img{
+            display: block;
+            width: 300px;
+        }
+        .bbb{
+            background: #afa;
+        }
+        .ccc{
+            background: url('../fff/background.jpg');
+        }
+
+        .ddd{
+            background: url('../fff/background.jpg');
+            background-size: 100%; /* 크기 조정 : 100% - 부모 width 기준 100%
+                                                - 이미지 종횡비 유지 */
+        }
+        .eee{
+            background: url('../fff/background.jpg');
+            background-size: 150px; /* 너비 px - 이미지 종횡비 유지 */
+        }
+        .fff{
+            background: url('../fff/background.jpg');
+            background-size: 100px 150px; /* 너비 높이 */
+        }
+
+        .ggg{
+            background: url('../fff/background.jpg');
+            background-size: 100px;
+            background-repeat: no-repeat;   /*
+                        reoeat(기본값), no-repeat, repeat-x, repeat-y
+            */
+            background-color: #ffa;
+        }
+        .hhh{
+            background: url('../fff/background.jpg');
+            background-size: 100px;
+            background-repeat: repeat-x;
+            background-color: #ffa;
+        }
+        .iii{
+            background: url('../fff/background.jpg');
+            background-size: 100px;
+            background-repeat: repeat-y;
+            background-color: #ffa;
+        }
+
+        .jjj{
+            background: url('../fff/background.jpg');
+            background-size: 100px;
+            background-repeat: no-repeat;
+            background-color: #ffa;
+            background-position: 50px 0px;  /* 왼쪽, 위*/
+        }
+        .kkk{
+            background: url('../fff/background.jpg');
+            background-size: 100px;
+            background-repeat: no-repeat;
+            background-color: #ffa;
+            background-position: bottom;
+        }
+        .lll{
+            background: url('../fff/background.jpg');
+            background-size: 100px;
+            background-repeat: no-repeat;
+            background-color: #ffa;
+            background-position: right center ;  /* */
+        }
+        .mmm{
+            background: url('../fff/background.jpg');
+            background-size: 100px;
+            background-repeat: no-repeat;
+            background-color: #ffa;
+            background-position: 20px bottom ;
+        }
+        .nnn{
+            background: url('../fff/background.jpg');
+            background-size: 100px;
+            background-repeat: no-repeat;
+            background-color: #ffa;
+            overflow: auto;
+        }
+        .ooo{
+            background: url('../fff/background.jpg');
+            background-size: 100px;
+            background-repeat: no-repeat;
+            background-color: #ffa;
+            overflow: auto;
+            background-attachment: scroll;
+            /*
+            background-attachment 스크롤시 배경이미지 영향
+                            전체스크롤      내부요소 스크롤
+         (기본값)scroll  :  O 내부와 같이        O
+
+                fixed   :  X 화면 고정          X
+
+                local   :  O                  O 요소 내부 스크롤시 배경도 함께 움직
+            */
+        }
+        .ppp{
+            background: url('../fff/background.jpg');
+            background-size: 100px;
+            background-repeat: repeat;
+            background-color: #ffa;
+            overflow: auto;
+            background-attachment: fixed;
+        }
+        .qqq{
+            background: url('../fff/background.jpg');
+            background-size: 100px;
+            background-repeat: no-repeat;
+            background-color: #ffa;
+            overflow: auto;
+            background-attachment: local;
+        }
+
+        .btn{
+            width: 300px;
+            height: 150px;
+            border-radius: 100px;
+            overflow: hidden;
+            border: 5px solid #faa;
+        }
+        .btn > img{
+            width: 800px;
+            display: block;
+            margin-left: -380px;
+            margin-top: 10px;
+            filter: blur(5px) hue-rotate(180deg);
+           
+            /* 
+            이미지 보정
+            blur(px) 흐리게, brightness(%) 밝기, contrast(%) 대비, grayscale(%) 회색조, sepia(%) 갈색,
+            hue-rotate(deg) 색상회전(색상값의 offset), invert(%) 반전, opacity(0~1) 투명도,
+            saturate(%) 채도, drop-shadow(npx npx npx #fff)그림자 효과, etc...
+             */
+        }
+        .bk{
+            background: url(../fff/background.jpg);
+            background-size: 800px;
+            background-position: -380px 10px;
+       }
+        .bkimg{
+            width: 300px;
+            height: 150px;
+            background: url(../fff/background.jpg);
+            background-size: 800px;
+            background-position: -380px 10px;
+            filter: blur(5px);
+       }
+    </style>
+</head>
+<body>
+    <h1>07_back</h1>
+    <img src="../fff/Sea wave.webp" class="aaa" alt="">
+    <div class="box">
+        <img src="../fff/Sea wave.webp" alt="">
+    </div>
+    <div class="box bbb"></div>
+    <div class="box ccc"></div>
+
+    <h3>크기</h3>
+    <div class="box ddd"></div>
+    <div class="box eee"></div>
+    <div class="box fff"></div>
+
+    <h3>반복</h3>
+    <div class="box ggg"></div>
+    <div class="box hhh"></div>
+    <div class="box iii"></div>
+
+    <h3>위치</h3>
+    <div class="box jjj"></div>
+    <div class="box kkk"></div>
+    <div class="box lll"></div>
+    <div class="box mmm"></div>
+    
+    <h3>attachment</h3>
+    <div class="box nnn">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+         Odit ratione doloremque aliquid omnis optio repudiandae harum
+          fuga voluptas quidem sint blanditiis necessitatibus libero,
+           accusantium tenetur. Fugit totam ullam excepturi ducimus.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+         Odit ratione doloremque aliquid omnis optio repudiandae harum
+          fuga voluptas quidem sint blanditiis necessitatibus libero,
+           accusantium tenetur. Fugit totam ullam excepturi ducimus.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+         Odit ratione doloremque aliquid omnis optio repudiandae harum
+          fuga voluptas quidem sint blanditiis necessitatibus libero,
+           accusantium tenetur. Fugit totam ullam excepturi ducimus.
+       </div>
+    <div class="box ooo">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+         Odit ratione doloremque aliquid omnis optio repudiandae harum
+          fuga voluptas quidem sint blanditiis necessitatibus libero,
+           accusantium tenetur. Fugit totam ullam excepturi ducimus.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+         Odit ratione doloremque aliquid omnis optio repudiandae harum
+          fuga voluptas quidem sint blanditiis necessitatibus libero,
+           accusantium tenetur. Fugit totam ullam excepturi ducimus.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+         Odit ratione doloremque aliquid omnis optio repudiandae harum
+          fuga voluptas quidem sint blanditiis necessitatibus libero,
+           accusantium tenetur. Fugit totam ullam excepturi ducimus.
+        </div>
+    <div class="box ppp">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+         Odit ratione doloremque aliquid omnis optio repudiandae harum
+          fuga voluptas quidem sint blanditiis necessitatibus libero,
+           accusantium tenetur. Fugit totam ullam excepturi ducimus.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+         Odit ratione doloremque aliquid omnis optio repudiandae harum
+          fuga voluptas quidem sint blanditiis necessitatibus libero,
+           accusantium tenetur. Fugit totam ullam excepturi ducimus.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+         Odit ratione doloremque aliquid omnis optio repudiandae harum
+          fuga voluptas quidem sint blanditiis necessitatibus libero,
+           accusantium tenetur. Fugit totam ullam excepturi ducimus.
+        </div>
+    <div class="box qqq">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+         Odit ratione doloremque aliquid omnis optio repudiandae harum
+          fuga voluptas quidem sint blanditiis necessitatibus libero,
+           accusantium tenetur. Fugit totam ullam excepturi ducimus.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+         Odit ratione doloremque aliquid omnis optio repudiandae harum
+          fuga voluptas quidem sint blanditiis necessitatibus libero,
+           accusantium tenetur. Fugit totam ullam excepturi ducimus.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+         Odit ratione doloremque aliquid omnis optio repudiandae harum
+          fuga voluptas quidem sint blanditiis necessitatibus libero,
+           accusantium tenetur. Fugit totam ullam excepturi ducimus.
+        </div>
+    
+    <h3>버튼</h3>
+    <div class="btn">
+        <img src="../fff/background.jpg" alt="">
+        까르보불닭 <!-- 글자가 영역안에 없기에 position 설정 필요-->
+    </div>
+
+    <div class="btn bk">까르까르불</div>
+    <!-- 글자가 보이고 blur 처리 테두리도 blur -->
+
+    <div class="btn">
+        <!-- 글자가 보이지만 blur 처리가 함께 테두리 blur X -->
+        <div class="bkimg">불닭까르보</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_react_work01</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrapper{
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ccc;
+            padding: 0 30px;
+        }
+
+        .big{
+            background: #aff;
+            padding: 30px;
+            overflow: hidden;
+        }
+
+        .box1{
+            background: #00f;
+            color: #fff;
+            width: 250px;
+            height: 250px;
+            margin-bottom: 25px;
+            padding: 5px;
+        }
+
+        .box2{
+            background: #000;
+            color: #fff;
+            height: 30px;
+            line-height: 30px;
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        .whbox{
+            overflow: hidden;
+            border: none;   
+            padding: 0;
+        }
+
+        .con1,
+        .con2{
+            width: 400px;
+            height: 250px;
+            padding: 5px;
+        }
+
+        .con1{
+            background: #af4;
+        }
+
+        .con2{
+            background: #afa;
+        }
+
+        @media screen and (min-width: 541px){
+            .con1,
+            .con2{
+                width: 48%;
+                float: left;
+            }
+
+            .con1{
+                margin-right: 4%;
+            }
+        }
+
+        @media screen and (max-width: 540px){
+            .wrap{
+                width: 100%;
+                padding: 0 15px;
+            }
+
+            .box1{
+                width: 100%;
+            }
+
+            .whbox{
+                border: 4px solid #fff;  
+                padding: 5px;
+            }
+
+            .con1,
+            .con2{
+                width: 100%;
+                float: none;
+            }
+
+            .con1{
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>07_react_work01</h1>
+    <div class="wrapper">
+        <div class="big">
+            <div class="box1">1</div>
+            <div class="box2">2</div>
+
+            <div class="whbox">
+                <div class="con1">contents1</div>
+                <div class="con2">contents2</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

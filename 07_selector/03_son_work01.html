@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_son_work01</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 800px;
+            height: 450px;
+            background-color: #afa;
+        }
+        .wrapper > div {
+            width: 100%;
+            height: 100px;
+            background-color: #faa;
+        }
+        .wrapper > div > ul{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            background-color: #fa0;
+            float: right;
+            display: flex;
+            justify-content: space-around;
+        }
+        .wrapper li{
+            list-style: none;
+        }
+        .wrapper > div > ul > li{
+            width: 200px;
+            text-align: center;
+            border-right: 1px solid #666;
+        }
+        .wrapper > span{
+            width: 100%;
+            height: 350px;
+            background-color: #aaf;
+            clear: both;
+            display: block;
+        }
+        span > ul{
+            width: 200px;
+            height: 350px;
+            background-color: #faf;
+            float: left;
+        }
+        span > ul > li{
+            width: 200px;
+            height: 30px;
+            background-color: #aff;
+            text-align: center;
+            line-height: 30px
+        }
+        .box{
+            width: 100%;
+            height: 350px;
+            background-color: #aaf;
+            
+        }
+        span > div {
+            width: 40px;
+            height: 40px;
+            background-color: #aaf;
+            
+        }
+        .box > ul{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 100px); 
+            gap: 10px;
+            padding: 10px;
+        }
+        .box li{
+            list-style: none;
+            border: 1px solid #555;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+        }
+
+        .box li img{
+            width: 100px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <h1>03_son_work01</h1>
+    <div class="wrapper">
+        <div>
+            <ul>
+                <li>회사소개</li>
+                <li>갤러리</li>
+                <li>제품</li>
+                <li>고객센터</li>
+            </ul>
+        </div>
+        <span>
+            <ul>
+                <li>인사말</li>
+                <li>인오소</li>
+                <li>인육개</li>
+                <li>인칠닭</li>
+            </ul>
+            <div class="box">
+                <ul>
+                    <li><img src="../fff/birrrd.jpg">하나</li>
+                    <li><img src="../fff/birrrd.jpg">둘</li>
+                    <li><img src="../fff/birrrd.jpg">셋</li>
+                    <li><img src="../fff/birrrd.jpg">넷</li>
+                    <li><img src="../fff/birrrd.jpg">다섯</li>
+                    <li><img src="../fff/birrrd.jpg">여섯</li>
+                    <li><img src="../fff/birrrd.jpg">일곱</li>
+                    <li><img src="../fff/birrrd.jpg">여덟</li>
+                    <li><img src="../fff/birrrd.jpg">아홉</li>
+                    <li><img src="../fff/birrrd.jpg">열</li>
+                    <li><img src="../fff/birrrd.jpg">열하나</li>
+                    <li><img src="../fff/birrrd.jpg">열둘</li>
+                </ul>
+            </div>
+        </span>
+    </div>
+</body>
+</html>

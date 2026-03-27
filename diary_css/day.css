@@ -1,0 +1,19 @@
+
+        .calendar{
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        .box{
+            border: 1px solid #000;
+            padding: 10px;
+            height: 30px;
+            text-align: right;
+        }
+
+        
+
+        .day{
+            text-align: center;
+            height: 30px;
+        }

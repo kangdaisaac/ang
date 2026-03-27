@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_coffee</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+            width: 200px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #333;
+            background-color: #aaa;
+            display: flex;
+        }
+    </style>
+    
+    <script>
+        const menu = "플랫화이트"
+        const ea = 3
+        let price
+
+        switch(menu){
+            case "아메리카노":
+                price = 2000
+                break
+
+            case "카푸치노":
+                price = 4500
+                break
+
+            case "라떼":
+                price = 3500
+                break
+
+            case "플랫화이트":
+                price = 6500
+                break
+
+        }
+        var tot = price * ea
+        
+    </script>
+</head>
+<body>
+    <h1>03_coffee</h1>
+
+    <ul>
+        <li>메뉴 : <script>document.write(`${menu}`)</script> </li>
+        <li>가격 : <script>document.write(`${price}`)</script>₩</li>
+        <li>수량 : <script>document.write(`${ea}`)</script></li>
+        <li>지불 금액 : <script>document.write(`${tot}`)</script>₩</li>
+    </ul>
+</body>
+</html>

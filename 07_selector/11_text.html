@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_text</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: #090;
+        }
+        a:visited{  /* 방문한 곳 */
+            text-decoration: none;
+            color: #fa0;
+        }
+        a:hover{
+            color: #f0f;
+        }
+        div{
+            margin: 20px;
+        }
+        div:nth-of-type(2)::first-line{ /* 첫 줄 */
+            color: #aaf;
+        }
+        
+        div:nth-of-type(3)::first-letter{ /* 첫 글자 */
+            color: #aaf;
+            font-size: 30px;
+        }
+        div:nth-of-type(odd){ /* 홀수 */
+            background-color: #ffa;
+        }
+        div:nth-of-type(even){ /* 짝수 */
+            background-color: #faf;
+        }
+        div:not(.asdf){ /* not 제외 : 클래스 asdf 제외 */
+            border: 3px solid #333;
+        }
+
+        div::selection{ /* 블럭(드래그)으로 선택시 */
+            background-color: #afa;
+            color: #faf;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>11_text</h1>
+    <div>
+        <a href="" target="_blank">link1</a>
+        <a href="https://www.naver.com/" target="_blank">link2</a>
+        <a href="https://www.google.com" target="_blank">link3</a>
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dicta culpa ducimus,
+         architecto numquam iusto rerum doloremque libero. Possimus ad reiciendis optio placeat
+          dolor nostrum rem esse officia facilis eaque!
+    </div>
+    <div>
+        앙orem ipsum dolor sit amet consectetur adipisicing elit. Delectus cum optio velit iste obcaecati,
+         qui necessitatibus placeat quis odio, quae nisi aperiam magnam dolorem repellat laboriosam,
+          assumenda numquam. Sunt, pariatur!
+    </div>
+    <div class="asdf">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+         Corrupti laborum sed culpa repellendus aliquid, ducimus delectus.
+          Totam in natus modi quidem officia, nisi consequatur ullam fuga quos libero voluptates repellat.
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+         Nulla consectetur eos assumenda ipsam commodi aliquid magni non, 
+         maxime qui libero perferendis laboriosam accusamus, optio totam.
+          Vero sint incidunt necessitatibus dignissimos.
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur ab,
+         accusamus facilis animi autem nisi ducimus iure hic ullam maiores facere enim.
+          Libero quos veniam accusantium quam, dolorem officia impedit!
+    </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_gall_work01</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 600px;
+            height: 500px;
+            background-color: #ffa;
+            position: relative;
+            margin: 0 auto; /* auto : absolute 불가 */
+            overflow: hidden;
+        }
+        .big{
+            width: 600px;
+            height: 2000px;
+            background-color: #afa;
+            position: relative;
+            left: 0px;
+            transition-duration: 0.5s;
+        }
+        .big > img{
+            width: 600px;
+            height: 500px;
+            display: block;
+        }
+        .btns{
+            width: 400px;
+            height: 100px;
+            background-color: rgba(0,0,255,0.1);
+            position: absolute;
+            bottom: 50px;
+            left: 100px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .btns > label{
+            display: block;
+            width: 50px;
+            height: 100px;
+            line-height: 50px;
+            background-color: rgba(200,200,0,0.5);
+            text-align: center;
+        }
+
+        input{
+            display: none;
+        }
+
+        input[id="im1"]:checked~.big{bottom: 0px}
+        input[id="im2"]:checked~.big{bottom: 500px}
+        input[id="im3"]:checked~.big{bottom: 1000px}
+        input[id="im4"]:checked~.big{bottom: 1500px}
+        input[id="im5"]:checked~.big{bottom: 2000px}
+    </style>
+</head>
+<body>
+    <h1>03_gall_work01</h1>
+    <div class="wrapper">
+        <input type="radio" id="im1" name="im">
+        <input type="radio" id="im2" name="im">
+        <input type="radio" id="im3" name="im">
+        <input type="radio" id="im4" name="im">
+        <input type="radio" id="im5" name="im">
+        <div class="big">
+            <img src="../fff/다운로드.jpg" alt="">
+            <img src="../fff/다운로드 (1).jpg" alt="">
+            <img src="../fff/다운로드 (2).jpg" alt="">
+            <img src="../fff/다운로드 (3).jpg" alt="">
+            <img src="../fff/다운로드 (4).jpg" alt="">
+        </div>
+        <div class="btns">
+            <label for="im1">1</label>
+            <label for="im2">2</label>
+            <label for="im3">3</label>
+            <label for="im4">4</label>
+            <label for="im5">5</label>
+        </div>
+    </div>
+</body>
+</html>

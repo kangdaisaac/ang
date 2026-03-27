@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09_status</title>
+    <style>
+        .wrapper{
+            width: 800px;
+            height: 800px;
+        }
+        .wrapper > div{
+            width: 100px;
+            height: 100px;
+            transition-duration: 0.4s; /* 변화 지연 시간, s(초)*/
+        }
+        .wrapper > div:hover{ /* 마우스 올렸을 때 */
+            width: 500px;
+            height: 120px;
+        }
+        .wrapper > div:nth-child(1){ background-color: #faa;}
+        .wrapper > div:nth-child(2){ background-color: #fa0;}
+        .wrapper > div:nth-child(3){ background-color: #ffa;}
+        .wrapper > div:nth-child(4){ background-color: #afa;}
+        .wrapper > div:nth-child(5){ background-color: #aaf;}
+        .wrapper > div:nth-child(6){ background-color: #30a;}
+        .wrapper > div:nth-child(7){ background-color: #faf;}
+        
+    </style>
+</head>
+<body>
+    <h1>09_status</h1>
+
+    <div class="wrapper">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    
+    <style>
+        fieldset{
+            width: 600px;
+            height: 50px;
+            margin: 5px;
+        }
+        input:focus{    /* 커서가 들어왔을 때 */
+            background-color: #ffa;
+        }
+        input:read-only{    
+            background-color: #faf;
+        }
+        input:disabled{    
+            color: #afa;
+        }
+        input:hover{
+            background-color: #aaf;
+        }
+        input:checked{
+            width: 50px;
+            height: 50px;
+            
+        }
+        
+        input[name="gen"]~img, label[for="em3chk"] > img{
+            width: 30px;
+        }
+        input[name="gen"]~img[src="../fff/on.png"]{         /* 1. 체크 이미지는 처음에는 보이지 않게 */
+            display: none;
+        }
+        input[name="gen"]:checked~img[src="../fff/on.png"]{ /* 2. 체크시 체크이미지 보이게 */
+            display: inline-block;
+        }
+        input[name="gen"]:checked~img[src="../fff/off.png"]{ /* 3. 체크시 빈 체크 이미지 보이지 않게 */
+            display: none;
+        }
+
+        input[name="gen"]{                                  /* 4. 체크 기능 확인 후 라디오 버튼 보이지 않게 */
+            display: none;
+        }
+
+        /* em3chk */
+        
+        #em3chk~label>img[src="../fff/on.png"],
+        #em3chk~input[name="email3"]{         /* 1. 체크 이미지는 처음에는 보이지 않게 */
+            display: none;
+        }
+        #em3chk:checked~label>img[src="../fff/on.png"],
+        #em3chk:checked~input[name="email3"]{ /* 2. 체크시 체크이미지 보이게 */
+            display: inline-block;
+        }
+        #em3chk:checked~label>img[src="../fff/off.png"],
+        #em3chk:checked~select[name="email2"]{ /* 3. 체크시 빈 체크 이미지 보이지 않게 */
+            display: none;
+        }
+
+        #em3chk{                                  /* 4. 체크 기능 확인 후 라디오 버튼 보이지 않게 */
+            display: none;
+        }
+    </style>
+
+    <form action="">
+        <fieldset>
+            <label>번호<input type="hidden" name="pno" value="23"></label>
+        </fieldset>
+        <fieldset>
+            <label>아이디<input type="text" name="pid" placeholder="아이디를 입력하새오"></label>
+        </fieldset>
+        <fieldset>
+            <!--             보임    변경    커서    data전송
+                 readonly :   O      X       O        O
+                 disalbed :   O      X       X        X     자주 사용하지 않음
+                 hidden   :   X      X       X        O
+            -->
+            <label>이름<input type="text" name="pname" value="홍길동" readonly></label>
+        </fieldset>
+        <fieldset>
+            <label>별명<input type="text" name="nick" value="지존" disabled></label>
+        </fieldset>
+        <fieldset>
+            <legend>취미</legend>
+            <label><input type="checkbox" value="running" name="hob">러닝</label>
+            <label><input type="checkbox" value="music" name="hob">노래</label>
+            <label><input type="checkbox" value="meditation" name="hob">명상</label>
+        </fieldset>
+        <fieldset>
+            <legend>성별</legend>
+            <label>
+                <input type="radio" name="gen" value="m">
+                <img src="../fff/off.png" alt="">
+                <img src="../fff/on.png" alt="">
+                남성
+            </label>
+            <label>
+                <input type="radio" name="gen" value="f">
+                <img src="../fff/off.png" alt="">
+                <img src="../fff/on.png" alt="">
+                여성
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>E-mail</legend>
+            <input type="text" name="email1">@
+                    <input type="checkbox" id="em3chk">
+
+                    <select name="email2" >
+                        <option value="naver.com">네이버</option>
+                        <option value="gmail.com">구글</option>
+                        <option value="daum.net">다음</option>
+                        <option value="nate.com">네이트</option>
+                    </select>
+                    <input type="text" name="email3">
+                    <label for="em3chk">
+                        <img src="../fff/off.png" alt="">
+                        <img src="../fff/on.png" alt="">
+                        직접입력
+                    </label>
+                </fieldset>
+        <fieldset>
+            <input type="submit" value="가입">
+        </fieldset>
+        
+
+
+
+    </form>
+</body>
+</html>

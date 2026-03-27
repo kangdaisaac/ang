@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_font</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Gaegu&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Gaegu&family=Playwrite+DK+Uloopet+Guides&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size: 16px; /* 지정하지 않을 경우 기본값 : 16px*/
+        }
+        .wrapper{
+            font-size: 24px;
+        }
+        p{
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 10px;
+        }
+        p:nth-of-type(1){
+            font-family: "Gaegu", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 22px;    /* 크기를 지정하지 않으면 '16px' 기본값 */
+        }
+        p:nth-of-type(2){
+            font-size: 16px;    /* 크기를 지정하지 않으면 '16px' 기본값 */
+        }
+
+        p:nth-of-type(3){
+            font-family: "East Sea Dokdo", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 24px;
+        }
+
+        p:nth-of-type(4){
+            font-family: "Playwrite DK Uloopet Guides", cursive;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 2rem 
+            /* 1rem = html 에서 지정한 font-size 
+                기본값인 경우 
+                html font-size : 16px = 1rem
+            */
+        }
+        p:nth-of-type(5){
+            font-family: "Playwrite DK Uloopet Guides", cursive;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 32px
+        }
+        p:nth-of-type(6){
+            font-family: "Playwrite DK Uloopet Guides", cursive;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 2em
+
+            /* 1em = 부모객체 에서 지정한 font-size 
+                기본값인 경우 
+                .wrapper font-size : 16px = 1em
+            */
+        }
+
+        .box{
+            background-color: #ffa;
+            border: 1px solid #333;
+            box-sizing: border-box;
+        }
+
+        .aaa{
+            width: 100%;
+            height: 100%;
+        }
+        .bbb{
+            width: 100vw; 
+            height: 100vh;
+
+            /* 
+                % : 부모의 크기 대비
+                viewport 의 폭 100% : 100vw
+                viewport 의 높이 100% : 100vh
+            */
+        }
+
+        .big{
+            width: 800px;
+            height: 400px;
+            background-color: #fa0;
+        }
+
+        .ccc{
+            width: 50%;
+            height: 50%;
+        }
+        .ddd{
+            width: 50vw;
+            height: 50vh;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>04_font</h1>
+    <div class="wrapper">
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            피카추 라이추 파이리 꼬부기 버터풀 야도란 피존투 또가스 서로 생긴 모습은 달라도 우리는 모두 친구 (마자용!)
+            月火水木金土日
+            1234567890
+            !@#$%^&*()
+            🐶🦊🐱🐺🦝🐯🦁
+        </p>
+        
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            피카추 라이추 파이리 꼬부기 버터풀 야도란 피존투 또가스 서로 생긴 모습은 달라도 우리는 모두 친구 (마자용!)
+            月火水木金土日
+            1234567890
+            !@#$%^&*()
+            🐶🦊🐱🐺🦝🐯🦁
+        </p>
+        
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            피카추 라이추 파이리 꼬부기 버터풀 야도란 피존투 또가스 서로 생긴 모습은 달라도 우리는 모두 친구 (마자용!)
+            月火水木金土日
+            1234567890
+            !@#$%^&*()
+            🐶🦊🐱🐺🦝🐯🦁
+        </p>
+        
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            피카추 라이추 파이리 꼬부기 버터풀 야도란 피존투 또가스 서로 생긴 모습은 달라도 우리는 모두 친구 (마자용!)
+            月火水木金土日
+            1234567890
+            !@#$%^&*()
+            🐶🦊🐱🐺🦝🐯🦁
+        </p>
+        
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            피카추 라이추 파이리 꼬부기 버터풀 야도란 피존투 또가스 서로 생긴 모습은 달라도 우리는 모두 친구 (마자용!)
+            月火水木金土日
+            1234567890
+            !@#$%^&*()
+            🐶🦊🐱🐺🦝🐯🦁
+        </p>
+        
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            피카추 라이추 파이리 꼬부기 버터풀 야도란 피존투 또가스 서로 생긴 모습은 달라도 우리는 모두 친구 (마자용!)
+            月火水木金土日
+            1234567890
+            !@#$%^&*()
+            🐶🦊🐱🐺🦝🐯🦁
+        </p>
+    </div>
+
+    <div class="box aaa">box1</div>
+    <div class="box bbb">box2</div>
+    <div class="big">
+        <div class="box ccc">box3</div>
+        <div class="box ddd">box4</div>
+    </div>
+</body>
+</html>

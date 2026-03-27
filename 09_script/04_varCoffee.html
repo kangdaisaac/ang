@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_varCoffee</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        wrapper{
+            width: 800px;
+            height: 800px;
+            background: url('../fff/hanji.jpg');
+            display: block;
+        }
+
+        header, nav, aside, section, main, figure, footer, address{
+            border: 1px solid #333;
+            margin: 20px;
+            padding: 20px;
+
+        }
+
+        aside{
+            width: 0 auto;
+            height: 50px;
+            text-align: center;
+        }
+
+        main{
+            width: 0 auto;
+            height: 300px;
+        }
+    </style>
+    
+    <script>
+        const coffName = "플랫화이트";
+        var coffPri = 6500,  coffQuan = 3
+        var totPri = coffPri * coffQuan;
+    </script>
+</head>
+<body>
+    <h1>04_varCoffee</h1>
+
+    
+    <wrapper>
+        <header> 카페
+            <nav>커피이름 - 커피가격 - 수량 - 금액 선언 출력</nav>
+        </header>
+        <aside>
+            커피이름<br/><script>document.write(coffName)</script>
+        </aside>
+        <main>
+            커피가격
+            <article>수량: <script>document.write(coffQuan)</script></article>
+            <section>
+                금액: <script>document.write(coffPri)</script>
+                <figure>
+                    <figcaption>총 금액: <script>document.write(totPri)</script></figcaption>
+                </figure>
+            </section>
+        </main>
+        <footer> 영수증 필요하실까요 ? </footer>
+    </wrapper>
+</body>
+</html>

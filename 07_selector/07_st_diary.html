@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_st_diary</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    tr{
+        text-align: center;
+        padding: 10px;
+    }
+    tr:nth-child(2)~tr{
+        height: 40px;
+    }
+    tr+tr+tr~tr{
+        text-align: right;
+    }
+    tr:nth-child(3) > td:first-child{
+        background-color: #f00;
+        color: #fff;
+    }
+    tr:nth-child(3) > td:nth-child(7){
+        background-color: #00f;
+        color: #fff;
+    }
+    tr > td:first-child{
+        color: #f00;
+    }
+    tr > td > h1{
+        color: #000;
+    }
+    tr > td:nth-child(7){
+        color: #00f;
+    }
+    tr:nth-child(5) > td:nth-child(4){
+        background-color: #ff0;
+    }
+</style>
+<body>
+    <h1>07_st_diary</h1>
+    <table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+            <td colspan="7">
+                <img src="../fff/Sea wave.webp" alt="">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                <h1>2026년 4월</h1>
+            </td>
+        </tr>
+        <!-- tr[align="right"]*7>td*7> -->
+        <tr>
+            <td>일</td>
+            <td>월</td>
+            <td>화</td>
+            <td>수</td>
+            <td>목</td>
+            <td>금</td>
+            <td>토</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>20</td>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>26</td>
+            <td>27</td>
+            <td>28</td>
+            <td>29</td>
+            <td>30</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>

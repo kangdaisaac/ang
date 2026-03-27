@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08_property</title>
+    <style>
+        div{
+            width: 300px;
+            height: 40px;
+            margin: 10px;
+            border: 1px solid #ccc;
+        }
+
+        /*
+        선택자[속성명 = '값'] 속성 선택자 : 속성이 값인 선택자 태그
+        */
+        div[qwer-data='abc']{ /* 정확하게 일치 */
+            color: #faa;
+        }
+        div[qwer-data~='abc']{ /* ~단어형태 abc, 띄어쓰기로 구분
+                                    abc, abc qwe, zxcv abc tyui */
+            font-weight: bolder;
+        }
+        div[qwer-data|='abc']{ /* |단어형태 abc, '-' 로 구분
+                                    abc, abc-qwe */
+            font-style: italic;
+        }
+        div[qwer-data^='abc']{ /* ^abc로 시작
+                                    abc, abc qwe, abc-qwe */
+            text-align: center;
+        }
+        div[qwer-data$='abc']{ /* ^abc로 끝
+                                abc, zxasfawsfabc */
+            text-decoration: underline;
+        }
+        div[qwer-data*='abc']{ /* ^abc 포함 모두
+                                abc, abc qwe, abc-qwe, zxcv abc tyui, zxcv-abc-tyui,
+                                 abcabasbsabba, zxasfawsfabc, pwoawkabcsifawspko */
+            background-color: #ffa;
+        }
+        .aaa{
+            background-color: #faf;
+        }
+        .bbb{
+            font-size: 30px;
+        }
+        .ccc{
+            text-align: right;
+        }
+
+        div[class="aaa bbb"]{ /* "aaa bbb" 일치 */
+            color: #aff;
+        }
+
+        img{
+            width: 100px;
+            border: 2px solid #00f;
+        }
+        img[src*='jp'], img[src*='JP']{
+            border: 2px solid #f00;
+        }
+        img[src$='png']{
+            border: 2px solid #0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>08_property</h1>
+    <div qwer-data="abc">abc 이지피지</div>
+    <div qwer-data="eee">eee 이지피지</div>
+    <div qwer-data="abc qwe">abc qwe 이지피지</div>
+    <div qwer-data="abc-qwe">abc-qwe 이지피지</div>
+    <div qwer-data="zxcv abc tyui">zxcv abc tyui 이지피지</div>
+    <div qwer-data="zxcv-abc-tyui">zxcv-abc-tyui 이지피지</div>
+    <div qwer-data="abcabasbsabba">abcabasbsabba 이지피지</div>
+    <div qwer-data="zxasfawsfabc">zxasfawsfabc 이지피지</div>
+    <div qwer-data="pwoawkabcsifawspko">pwoawksifawspko 이지피지</div>
+
+    <div class="aaa bbb">aaa bbb</div>
+    <div class="aaa ccc">aaa ccc</div>
+
+<!--
+    JPG,jpeg : 테두리색 빨강    
+    webp,gif : 테두리색 파랑
+    png : 테두리색 녹색
+-->
+    <img src="../fff/birrrd.JPG" alt="">
+    <img src="../fff/birrrd.webp" alt="">
+    <img src="../fff/birrrd.gif" alt="">
+    <img src="../fff/birrrd.png" alt="">
+    <img src="../fff/birrrd.jpeg" alt="">
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06_react</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        /*   
+        body{
+            background-color: #ffa;
+        } */
+
+        /* width >= 1200 데스크탑 */
+        @media screen and (min-width:1200px) {
+            body{
+            background-color: #faf;
+
+            }
+            .rr{
+                width: 1200px;  /* 8열 */
+            }
+        }
+
+        /* 1200 >= width >= 540 태블릿 */
+        @media screen and (max-width:1200px)
+                      and (min-width:540px) {
+            body{
+            background-color: #afa;
+
+            }
+            .rr{
+                width: 560px;   /* 4열 */
+            }
+        }
+        /* 540 >= width 모바일 */
+        @media screen and (max-width:540px) {
+            body{
+            background-color: #ffa;
+
+            }
+            .rr{
+                width: 280px;   /* 2열 */
+            }
+        }
+        .big > div{
+            width: 100px;
+            height: 100px;
+            background-color: #aff;
+            border: 1px solid #333;
+            box-sizing: border-box;
+            float: left;
+            margin: 20px;
+        }
+        h2{
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>06_react</h1>
+    <h2>반응형 안할래</h2>
+    <div class="big">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+    </div>
+    
+    <h2>반응형 할래</h2>
+    <div class="big rr">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+    </div>
+</body>
+</html>

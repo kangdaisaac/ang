@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_table</title>
+</head>
+<body>
+    <h1>03_table</h1>
+    <table border="" bgcolor="#0ff">응애상어 <!-- border는 잘 사용되지 않음 -->
+        <tr>응애고래          <!-- 표 구조 밖의 텍스트는 포함되지 않는다 -->
+            <td width="100px">1_1</td>
+            <td>1_2</td>
+            <td>
+                <img src="../fff/Sea wave.webp" width="50px" alt="">
+            </td>
+        </tr>
+        <tr bgcolor="#ff0">
+            <td width="50px">2_1</td>
+            <td bgcolor="#0f0">2_2</td>
+            <td>2_3</td>
+        </tr>
+        <!--
+        같은 속성이 중첩될 경우
+        1. scope의 우선 순위를 따름 (작은 영역이 우선 순위가 높다)
+            td > tr > table
+        2. 같은 scope에서 속성이 같을 경우 비교가 가능한 값이면 큰 값을 기준으로 한다.
+        -->
+        <tr>
+            <!--
+             rowspan    : 행늘이기
+             colspan    : 칸늘이기 -->
+            <td width="200px" rowspan="2">3_1</td>
+            <!-- colspan : 2칸 -->
+            <td colspan="2">3_2</td>
+            <!-- <td>3_3</td> -->
+        </tr>
+        <!-- 
+        <td>응애범고래</td>
+         구조는
+         table(표) > tr(행) > td(칸) 을 준수해야만 한다 
+         -->
+        <tr>
+            <!-- <td>4_1</td> -->
+            <td>4_2</td>
+            <td>4_3</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table border="" width="100%">
+                    <tr>
+                        <td>새로운칸1</td>
+                        <td>새로운칸2</td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+    <h2>테이블 속성</h2>
+    <!-- table>tr*3>td*4> -->
+    <table border="10" cellspacing="10" cellpadding="5"> 
+        <caption>회원정보</caption>
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>성별</th>
+            <th>키</th>
+        </tr>
+        <tr>
+            <td>트람푸</td>
+            <td>66</td>
+            <td>남</td>
+            <td>192</td>
+        </tr>
+        <tr>
+            <td>도날드닥</td>
+            <td>45</td>
+            <td>수</td>
+            <td>113</td>
+        </tr>
+    </table>
+
+    <figure>
+        <FIGcaption>고양이네마리</FIGcaption>
+        <img src="../fff/8-3.jpg" width="200px" alt="">
+    </figure>
+</body>
+</html>

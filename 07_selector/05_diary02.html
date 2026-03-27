@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_diary02</title>
+    <style>
+        *{ /* gpt버전 -> 특정 요일과 날짜를 h4로 묶어 관리 */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrapper{
+            width: 400px;
+            margin: 20px;
+            border: 2px solid #000;
+        }
+
+        .img_box img{
+            width: 350px;
+            display: block;
+        }
+
+        .wrapper h2{
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+
+        /* 달력 grid */
+        h2 + div{
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        /* 모든 칸 */
+        h2 + div h3,
+        h2 + div h4,
+        h2 + div div{
+            border: 1px solid #000;
+            height: 45px;
+            box-sizing: border-box;
+            padding: 8px;
+        }
+
+        /* 요일 줄 정렬 (첫 줄만) */
+        h2 + div h3,
+        h2 + div h3 + div,
+        h2 + div h3 + div + div,
+        h2 + div h3 + div + div + div,
+        h2 + div h3 + div + div + div + div,
+        h2 + div h3 + div + div + div + div + div,
+        h2 + div h3 + div + div + div + div + div + h4{
+            text-align: center;
+            line-height: 45px;
+            padding: 0;
+        }
+
+        /* 날짜는 오른쪽 */
+        h2 + div h3 ~ div,
+        h2 + div h3 ~ h4{
+            text-align: right;
+        }
+
+        /* ------------------
+           일요일 (h3)
+        ------------------ */
+        h2 + div h3{
+            color: red;
+        }
+
+        /* 첫 번째 h3 (요일 '일')만 배경 */
+        h2 + div h3{
+            background-color: red;
+            color: white;
+        }
+
+        /* 그 뒤에 나오는 h3들은 다시 배경 제거 */
+        h2 + div h3 ~ h3{
+            background-color: transparent;
+            color: red;
+        }
+
+        /* ------------------
+           토요일 (h4)
+        ------------------ */
+        h2 + div h4{
+            color: blue;
+        }
+
+        /* 첫 번째 h4 (요일 '토') */
+        h2 + div h3 + div + div + div + div + div + h4{
+            background-color: blue;
+            color: white;
+        }
+
+        /* 나머지 h4 (날짜)는 글자만 */
+        h2 + div h3 ~ h4{
+            background-color: #fff;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>05_diary02</h1>
+    <div class="wrapper">
+        <div class="img_box">
+            <img src="../fff/Sea wave.webp" alt="">
+        </div>
+
+        <h2>2026년 4월</h2>
+            
+        <div>
+            <!-- 요일 -->
+            <h3>일</h3>
+            <div>월</div>
+            <div>화</div>
+            <div>수</div>
+            <div>목</div>
+            <div>금</div>
+            <h4>토</h4>
+        
+            <!-- 1주 -->
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <h4>4</h4>
+        
+            <!-- 2주 -->
+            <h3>5</h3>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>10</div>
+            <h4>11</h4>
+        
+            <!-- 3주 -->
+            <h3>12</h3>
+            <div>13</div>
+            <div>14</div>
+            <div>15</div>
+            <div>16</div>
+            <div>17</div>
+            <h4>18</h4>
+        
+            <!-- 4주 -->
+            <h3>19</h3>
+            <div>20</div>
+            <div>21</div>
+            <div>22</div>
+            <div>23</div>
+            <div>24</div>
+            <h4>25</h4>
+        
+            <!-- 5주 -->
+            <h3>26</h3>
+            <div>27</div>
+            <div>28</div>
+            <div>29</div>
+            <div>30</div>
+            <div></div>
+            <h4></h4>
+        </div>
+    </div>
+</body>
+</html>

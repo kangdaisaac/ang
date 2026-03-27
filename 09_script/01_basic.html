@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_basic</title>
+</head>
+<body>
+    <h1>01_basic</h1>
+    document.write("방가방가")
+    <!-- script 태그 안에서 작성해야 한다. -->
+
+    <script>    //script 구간 시작
+                // 한줄 주석
+                /*
+                주석구간
+                
+                */
+        document.write("우리친구") // html 문서에 문자형태로 작성
+        // 태그나 스타일 등 유의미한 내용도 코드 반영
+
+        document.write("<h2>햄토리</h2>")
+        // '빙글빙글' 직접 출력 불가
+
+            //script 구간 끝
+    </script>
+    <div>일반 div</div>
+
+    <script language="javascript"> // script 구간 분리 가눙
+
+        document.write("내가 제일 좋아하는건 '까만 해바라기씨'")
+        document.write("<br/>")
+        // document.write("햄토리~ "햄토리"야~")
+        document.write('햄토리~ "햄토리"야~')
+        document.write("<br/>")
+        document.write('\"햄토리는 다른 햄스터들에 비해 \'굉장히\' 사회적\"이다.')
+        // 특수기호 사용시 문자열로 처리할 셩우 \ 를 앞에 기재
+        /*
+        
+        \"      "
+        \'      '
+        \t      tab
+        \n      줄바꿈
+        \0      null
+
+        */
+        document.write("<br/>")
+
+        //console 에 출력
+        console.log("골든햄스터")   //출력마다 줄 바꿈
+        console.log(1+2+3+4)    //연산 가능
+        document.write(5+6+7+8)
+        console.log("<br/>")
+        console.log("언제나 즐거운 우리 친구 \t햄토리 \n방가방가 \t우리 \n친구 햄토리")
+        console.log(
+            "\t  +-----------------------------------------------+ \n\
+     /\t\t\t\t\t\t\t\t\t\t\t\t /|\n\
+    +-----------------------------------------------+ |\n\
+    |\t\t\t\t\t\t\t\t\t\t\t\t| |\n\
+    |               -            -                  | |\n\
+    | ------------ ★ ---------- ★ -------------  /| |\n\
+    |                     ▽                        | |\n\
+    |                                               | *\n\
+    |                                               |/\n\
+    +-----------------------------------------------+")
+
+        console.log('⊂_ヽ\n\
+ ＼＼ Λ＿Λ\n\
+  ＼( ‘ㅅ\' ) 두둠칫\n\
+   >　⌒ヽ\n\
+  / 　 へ＼\n\
+ /　　/　＼＼\n\
+ ﾚ　ノ　　 ヽ_つ\n\
+/　/두둠칫\n\
+/　/|\n\
+(　(ヽ\n\
+|　|、＼\n\
+| 丿 ＼ ⌒)\n\
+| |　　) /\n\
+`ノ )　 Lﾉ');
+    </script>
+</body>
+</html>

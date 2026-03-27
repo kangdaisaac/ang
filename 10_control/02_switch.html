@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_switch</title>
+</head>
+<body>
+    <h1>02_switch</h1>
+    <script>
+        switch(50){
+            case 30:
+                document.write("30 입니다 1<br/>")
+
+            case 20:            // 이동하여 실행 (하위도 모두 실행)
+                document.write("20 입니다 <br/>")
+
+            case 30:
+                document.write("30 입니다 2<br/>")
+
+            case 50:
+                document.write("50 입니다 <br/>")
+
+            case 10:
+                document.write("10 입니다 <br/>")
+        }
+        document.write("switch 종료 ------------ 1 <br/>")
+
+        switch(30){
+            case 30:
+                document.write("30 입니다 1<br/>")
+                break       //제어문 탈출
+
+            case 20:           
+                document.write("20 입니다 <br/>")
+                break
+            
+            case 30:
+                document.write("30 입니다 2<br/>")
+                break       // 같은 값이 있을 경우 먼저 설정한 case 실행 후 탈출
+
+            case 50:
+                document.write("50 입니다 <br/>")
+                break
+
+            case 10:
+                document.write("10 입니다 <br/>")
+        }
+        document.write("switch 종료 ------------ 2 <br/>")
+
+        switch(60){
+            case 30:
+                document.write("30 입니다 1<br/>")
+                break       //제어문 탈출
+
+            case 20:           
+                document.write("20 입니다 <br/>")
+                break
+            default:        //else 와 같음 - 순서 상관 없이 다른 case 지정 문제 X
+                document.write("기본값 입니다 2<br/>")
+                break       
+
+            case 50:
+                document.write("50 입니다 <br/>")
+                break
+
+            case 10:
+                document.write("10 입니다 <br/>")
+
+        }
+        document.write("switch 종료 ------------ 3 <br/>")
+
+        switch(60){
+            case 30:
+                document.write("30 입니다 1<br/>")
+                break       //제어문 탈출
+
+            case 20:           
+                document.write("20 입니다 <br/>")
+                break
+
+            case 50, 60, 70, 80:    // 진입 X
+                document.write("50,60,70,80 입니다 <br/>")
+                break
+
+            case 10:
+                document.write("10 입니다 <br/>")
+
+        }
+        document.write("switch 종료 ------------ 4 <br/>")
+
+        switch(true){    // 정수, 실수, 문자열, boolean 가능
+            case true:
+                document.write("true 입니다 1<br/>")
+                break       //제어문 탈출
+
+            case 123.456:           
+                document.write("123.456 입니다 <br/>")
+                break
+
+            case "쉬는시간":    
+                document.write("신이 만든 시간 <br/>")
+                break
+
+            case 10:
+                document.write("10 입니다 <br/>")
+
+        }
+        document.write("switch 종료 ------------ 5 <br/>")
+
+        const pos = "과장"
+        const base = 600
+        var bonus
+
+        switch(pos){
+            case "부장":
+                bonus = 0.5
+                break
+            case "과장":
+                bonus = 0.3
+                break
+            case "대리":
+                bonus = 0.2
+                break
+            default:
+                bonus = 0.1
+                break
+        }
+        var money = base + base * bonus
+        document.write(`${pos}<br/>`)
+        document.write(`${base}<br/>`)
+        document.write(`${bonus}<br/>`)
+        document.write(`${money}<br/>`)
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+        
+
+        .sun{
+            background-color: #f00;
+            color: #fff;
+        }
+
+        .sat{
+            background-color: #00f;
+            color: #fff;
+        }
+
+        .red{
+            color: #f00;
+        }
+
+        .blue{
+            color: #00f;
+        }
+
+        .yellow{
+            background-color: #ff0;
+        }

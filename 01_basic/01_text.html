@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>
+            텍스트입니다
+        </title>
+    </head>
+    <body>
+        <!-- heading 글자 크기 및 강제 개행 
+         <h1>          : 엘리먼트 노드
+        heading 1입니다 : 텍스트 노드
+        -->
+        <h1>heading 1입니다</h1>
+        <h2>heading 2입니다</h2>
+        <h3>heading 3입니다</h3>
+        <h4>heading 4입니다</h4>
+        <h5>heading 5입니다</h5>
+        <h6>heaidng 6입니다</h6>
+        <!-- <h7>heading 7은 존재하지 않습니다</h7> -->
+
+         <p>    <!-- 문단 구분 : 글자크기, 개행은 영향을 미치지 않는다 -->
+            여긴 참나무 숲 장수 풍뎅이와 사슴벌레가 살지 <br/> <!-- br : 강제 개행 (문단여백이 없다) -->
+            낮엔 숨어있다 밤엔 살금살금 신나게 놀러다녀  <br/>
+            단단한 갑옷입고 머리에 우뚝 솟은 뿔
+         </p>
+         <p>
+            <!-- 다수의 띄어쓰기는 1칸 띄어쓰기로 실행 -->
+            아기상어 뚜루루뚜루           귀여운 뚜루루뚜루 바닷속 뚜루루뚜루 아기 상어
+            엄마상어 뚜루루뚜루 뭐더라 뚜루루뚜루 몰라요 뚜루루뚜루 엄마 상어
+            아빠상어 뚜루루뚜루 까먹음 뚜루루뚜루 진짜로 뚜루루뚜루 아빠 상어
+         </p>
+
+        <hr/>
+        <hr color="red"/> <!-- 속성 : 엘리먼트 노드가 지니고 있는 성질
+                             color="red" 색상속성을 red로 지정 -->
+        <!--
+            
+        크기 단위
+
+        bit                                                             byte
+                                                BCD         ASCII       EBCDIC
+        1       2       3       4       5       6           7           8
+        2       4       8       16      32      64          128         256
+        ----------------------------------------------------------------------------
+        0 - off 00      000                     0~9(10)     +특수기호    +양(0)/음(1)
+        1 - on  01      001                     a~z(26)
+                10      010                     A~Z(26)
+                11      011                         62
+                        100
+                        101
+                        110
+                        111
+                             
+                             
+                             
+                             
+                             
+        -->
+        <hr color="#ff0000" size="5px" width="600px" /> <!-- #ff0000 : red 여러 속성 지정가능 -->
+        <hr size="20px" align="left" width="600" noshade/>
+
+         <!--
+         기호       기호설명        예약문자
+         --------------------------------
+         &          엠퍼샌드        &amp;
+         <          보다작은        &lt;
+         >          보다 큰         &gt;
+         공백        공백            &nbsp;
+         ⓒ          저작권          &copy;
+         
+         -->
+         <p>
+            &lt;p&gt; : p태그 문단 표현
+            &copy;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;
+         </p>
+        <span style="background: #ff0000;">빨강</span>
+        <span style="background: #ffaa00;">주황</span>
+        <span style="background: #ffff00;">노랑</span>
+        <span style="background: #00ff00;">초록</span>
+        <span style="background: #0000ff;">파랑</span>
+        <span style="background: #00008e;">남색</span>
+        <span style="background: #ff00ff;">보라</span>
+        <hr/>
+
+        여기는 <font color="#ff0000">부산 </font>서면입니다<br/>
+        여기는 <font color="#ff0000" size="7">부산 </font>서면입니다<br/>
+        피카추
+        <b>피카추</b>
+        <i>피카추</i>
+        <u>피카추</u>
+        <s>피카추</s>
+        <sub>피카추</sub>
+        <sup>피카추</sup>
+        
+    </body>
+</html>
