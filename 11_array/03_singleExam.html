@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_singleExam</title>
+</head>
+<body>
+    <h1>03_singleExam</h1>
+
+        <!--     
+        03_singleExam.html
+        현빈              78
+        원빈              68
+        젤리빈            58
+        미스터빈          48
+        장희빈            88
+        텅빈             38
+        레오나르도다빈     98
+        커피빈            87 
+        
+        합계
+        평균 
+        -->
+
+
+        <script>
+            const name = ["현빈","원빈","젤리빈","미스터빈","장희빈","텅빈","레오나르도다빈","커피빈"]
+            const num = [78, 68, 58, 48, 88, 38, 98, 87]
+            
+            let tot = 0
+            let avg = 0
+            for (let i in num) {   
+                document.write(`${name[i]} : ${num[i]}<br/>`)
+                tot += num[i]
+            }
+            document.write(`<hr/>`)
+
+            avg = tot / num.length
+
+            document.write(`합계 : ${tot} <br/>`)
+            document.write(`합계 : ${avg} <br/>`)
+        </script>
+
+</body>
+</html>

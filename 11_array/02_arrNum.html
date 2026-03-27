@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_arrNum</title>
+</head>
+<body>
+    <h1>02_arrNum</h1>
+    <script>
+        const nums = [11, 78, 14, 9, 12, 45, 23, 7]
+        // 3의 배수 찾아 새로운 배열로 생성
+        
+        let three = []
+        let now = 0
+        for (const nn of nums) {
+            if(nn % 3 == 0){
+                three[now++] = nn
+                document.write(`${nn}, ${three} <br/>`)
+            }
+        }
+        document.write(`3의 배수 ${three} <br/>`)
+
+    </script>
+</body>
+</html>

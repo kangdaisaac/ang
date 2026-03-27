@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_sort</title>
+</head>
+<body>
+    <h1>04_sort</h1>
+    <script>
+        let a = 10, b =20
+
+        document.write(`교체 전1 : ${a}, ${b} <br/>`)
+        a = b
+        b = a
+        document.write(`교체 후1 : ${a}, ${b} <br/>`)
+
+        a = 10, b =20
+
+        document.write(`교체 전2 : ${a}, ${b} <br/>`)
+        let buf = a
+        a = b
+        b = buf
+        document.write(`교체 후2 : ${a}, ${b} <br/>`)
+
+        let arr = [70, 60, 80, 90, 50, 60]
+            document.write(`<hr/>`)
+
+        document.write(`정렬 전 : ${arr} <br/>`)
+
+
+        
+        for (const me in arr){
+            document.write(`${me}: ${arr[me]} <br/>`)
+
+            for (let you = eval(me) + 1; you < arr.length; you++) {
+                // document.write(`${arr[you]}, `)
+                if(arr[me] < arr[you]){
+                    buf = arr[me]
+                    arr[me] = arr[you]
+                    arr[you] =buf
+                }
+               
+                
+            }
+            document.write(`<br/>`)
+        }
+        document.write(`정렬 후 : ${arr} <br/>`)
+
+    </script>
+</body>
+</html>
