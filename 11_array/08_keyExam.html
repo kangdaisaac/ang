@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08_keyExam</title>
+</head>
+<body>
+    <h1>08_keyExam</h1>
+    <script>
+        let st = {
+                name:"신짱구",
+                jum:[72,77,78],
+                // tot: 0,
+                // avg: 0,
+                // grade: "미"
+        }
+
+        console.log(st)
+
+        st.tot = 0
+        for (const j of st.jum) {
+            console.log(j)
+            st.tot += j
+        }
+        st.avg = st.tot/st.jum.length
+        
+        if(st.avg >= 90){
+            st.grade ="수"
+        }else if(st.avg >= 80){
+            st.grade ="우"
+        }else if(st.avg >= 70){
+            st.grade ="미"
+        }else if(st.avg >= 60){
+            st.grade ="양"
+        }else {
+            st.grade ="가"
+        }
+
+        console.log(st)
+
+        //1. 입력부
+        let studs = [
+            {name: "신짱구",jum: [77,72,78]},
+            {name: "김철수",jum: [57,52,58]},
+            {name: "한유리",jum: [97,92,98]},
+            {name: "이훈이",jum: [67,62,68]},
+            {name: "남궁맹구",jum: [87,82,88]},
+        ]
+
+        //2. 연산부
+        for (let mem of studs) {
+            mem.tot = 0
+            for(const j of mem.jum){
+                mem.tot += j
+            }
+            mem.avg = mem.tot / mem.jum.length
+            if(mem.avg >= 90){
+                mem.grade ="수"
+            }else if(mem.avg >= 80){
+                mem.grade ="우"
+            }else if(mem.avg >= 70){
+                mem.grade ="미"
+            }else if(mem.avg >= 60){
+                mem.grade ="양"
+            }else {
+                mem.grade ="가"
+            }
+        }
+
+        //3. 출력부
+    </script>
+
+        
+        <table border="">
+            <tr>
+                <script>
+                    for (const ee of ["이름", "국어", "영어", "수학", "총점", "평균", "등급"]) {
+                        document.write(`<td>${ee}</td>`)                   
+                    }
+                    
+                    for (const st of studs) {
+                        let ttt = "<tr>"
+                        ttt += `<td>${st.name}</td>` 
+                        
+                        for (const j of st.jum) {
+                            ttt += `<td>${j}</td>`
+                        }
+                        for (const ee of ["tot", "avg", "grade"]) {
+                            ttt += `<td>${st[ee]}</td>`
+                        }
+
+
+
+                        /* 아래 코드는 불안정함
+                        for (const k in st) {
+                            // console.log(k, st[k])
+                            if(k!="jum"){   // 점수가 아닐때
+                                ttt += `<td>${st[k]}</td>`                     
+                            }else{  // 점수일 때
+
+                                for (const j of st[k]) {
+                                    ttt += `<td>${j}</td>`
+                                }
+
+                            }
+                        }*/
+                        ttt += "</tr>"
+                        document.write(ttt)
+                    }
+                </script>
+                
+            </tr>
+        </table>
+
+</body>
+</html>
