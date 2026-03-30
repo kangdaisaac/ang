@@ -24,41 +24,22 @@
             {'name':'손지창','jum':61},
             {'name':'김무경','jum':95},
             {'name':'김성욱','jum':81}
-        ]
+        ];
 
-        let result = [];
+        let result = {};
 
-        for(let i = 0; i < player.length; i++){
-            let p = player[i];
-            let max = p.jum;
-            let chk = false;
-
-            for(let r of result){
-                if(r.name == p.name){
-                    chk = true;
-                }
+        for (const p of player) {
+            if (result[p.name] == undefined) {
+                result[p.name] = p.jum;
+            } else if (result[p.name] < p.jum) {
+                result[p.name] = p.jum;
             }
-
-            if(chk){
-                continue;
-            }
-
-            for(let j = i + 1; j < player.length; j++){
-                if(p.name == player[j].name){
-                    if(max < player[j].jum){
-                        max = player[j].jum;
-                    }
-                }
-            }
-
-            result.push({name:p.name, jum:max});
         }
 
-        console.log(result);
 
-        for(let rr of result){
-            document.write(`${rr.name} : ${rr.jum}<br>`);
+        for (const k in result) {
+            document.write(`${k} : ${result[k]}<br>`);
         }
-</script>
+    </script>
 </body>
 </html>
