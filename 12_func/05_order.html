@@ -4,20 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>05_order</title>
+    <style>
+        section{
+            width: 200px;
+            height: 120px;
+            margin: 10px 0;
+        }
+        section > div{
+            width: 200px;
+            height: 30px;
+            clear: both;
+        }
+        section > div > div{
+            width: 80px;
+            height: 30px;
+            float: left;
+        }
+    </style>
 </head>
 <body>
     <h1>05_order</h1>
+    <script>
+        function order(menu, cnt){
+            let price = 0;
+            let ret;
 
-    <!--
-    
-    아메리카노 2000
-    아프리카노 2100
-    아시아노 2300
+            if(menu == "아메리카노"){
+                price = 2000;
+            }else if(menu == "아프리카노"){
+                price = 2100;
+            }else if(menu == "아시아노"){
+                price = 2300;
+            }
+ 
+            ret = {
+                menu : menu,
+                price : price,
+                cnt : cnt,
+                tot : price * cnt
+            };
 
-    메뉴, 수랑 - 주문 구현
-    
-    연산부, 출력부 함수 구분 처리
-    
-    -->
+            orderDiv(ret);
+        }
+
+        function orderDiv(data){
+            let ttt = `<section>`;
+
+            for (const k in data) {
+                ttt += `<div><div>${k}</div>`;
+                ttt += `<div>${data[k]}</div></div>`;
+            }
+
+            ttt += `</section>`;
+            document.write(ttt);
+        }
+
+        order("아메리카노", 2);
+        order("아프리카노", 3);
+        order("아시아노", 1);
+    </script>
 </body>
 </html>

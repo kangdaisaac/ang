@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06_internal</title>
+</head>
+<body>
+    <h1>06_internal</h1>
+    <script>
+        let now = new Date()
+        document.write(`now : ${now} <br/>`)
+        document.write(`now.getFullYear() : ${now.getFullYear()} <br/>`)
+        document.write(`now.getMonth() 0~11 : ${now.getMonth()} <br/>`)
+        document.write(`now.getDate() : ${now.getDate()} <br/>`)
+        document.write(`now.getDay() 일0~토6 : ${now.getDay()} <br/>`)
+        document.write(`now.getHours() : ${now.getHours()} <br/>`)
+        document.write(`now.getMinutes() : ${now.getMinutes()} <br/>`)
+        document.write(`now.getSeconds() : ${now.getSeconds()} <br/>`)
+        document.write(`now.getMilliseconds() : ${now.getMilliseconds()} <br/>`)
+
+        // 함수의 형태
+        function fn_1(){
+            document.write(`fn_1 실행 <br/>`)
+            return 100
+        }
+
+        let rr = fn_1() // 함수호출 : 함수 리턴값 가져옴
+        console.log(rr)
+        let aa = fn_1       // 함수대입 : 함수를 객체로 대입
+        console.log(aa)
+        aa()
+
+        let bb = function(){
+            document.write(` 익명형 함수 실행 <br/>`)
+            return 200
+        }
+        console.log(bb)
+        rr = bb()
+        console.log(rr)
+
+        function fn_3(){
+            document.write(`fn_3() 실행 <br/>`)
+        }
+
+        setTimeout(fn_3, 2000)  // 2초 뒤  fn_(3)실행
+
+    </script>
+</body>
+</html>
