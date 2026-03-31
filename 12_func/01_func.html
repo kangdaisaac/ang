@@ -21,6 +21,21 @@
             document.write(`fn_1() 끝 ----------<br/>`)
             return 1234
         }
+        
+        function fn_2(aa,bb){
+            document.write(`fn_2() aa: ${aa}, bb: ${bb}, ret : X <br/>`)
+            return
+        }
+        
+        function fn_3(){
+            document.write(`fn_3() param : X, ret : X <br/>`)
+            // return 이 없는 경우 생략 가능
+        }
+        
+        function fn_4(aa,bb){
+            document.write(`fn_4() param : X <br/>`)
+            return {pname: "피캣추", age:56, marriage:false}
+        }
 
         /*
         함수호출
@@ -35,6 +50,22 @@
 
         rr = fn_1("파덕파덕", 200)
         document.write(`rr ${rr}<br/>`)
+        
+        rr = fn_1() // 인수를 입력하지 않은 경우 undifined
+        document.write(`rr ${rr}<br/>`)
+        
+        rr = fn_1("팔랑팔랑", "나풀나풀", "풀럭풀럭")   // 순서에 맞게 인수 대입
+                                                    // 여분의 인수 사용안함
+        document.write(`rr ${rr}<br/>`)
+        
+        rr = fn_2("하이드로펌프", 123)
+        document.write(`rr ${rr}<br/>`)         // return 없어 undifined
+        
+        rr = fn_3("파도타기", 456)
+        document.write(`rr ${rr}<br/>`)
+        
+        rr = fn_4("몸통박치기", 200)
+        document.write(`rr ${rr.pname}, ${rr.age}, ${rr.marriage}<br/>`)
     </script>
 </body>
 </html>
