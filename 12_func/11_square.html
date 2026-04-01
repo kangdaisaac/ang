@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10_exam</title>
+    <style>
+        table, td{
+            border: 1px solid #333;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+        li{
+            border: 1px solid #333;
+            margin: 10px 0;
+            padding: 10px;
+            width: 220px;
+        }
+        li > div{
+            padding: 3px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>10_exam</h1>
+
+    <script>
+        function rectOne(w, h){
+            return {
+                width : w,
+                height : h,
+                area : w * h,
+                border : (w + h) * 2
+            };
+        }
+
+        function view(vvFn, ...rects){
+            vvFn(rects);
+        }
+
+        function tableGo(arr){
+            let section = document.querySelector("section");
+            let ttt = `<table>`;
+
+            ttt += `
+                <tr>
+                    <td>가로</td>
+                    <td>세로</td>
+                    <td>넓이</td>
+                    <td>둘레길이</td>
+                </tr>
+            `;
+
+            for(const rr of arr){
+                ttt += "<tr>";
+                for(const k in rr){
+                    ttt += `<td>${rr[k]}</td>`;
+                }
+                ttt += "</tr>";
+            }
+
+            ttt += `</table>`;
+            section.innerHTML = ttt;
+        }
+
+        function divGo(arr){
+            let section = document.querySelector("section");
+            let ttt = `<ul>`;
+
+            for(const rr of arr){
+                ttt += "<li>";
+                ttt += `<div>가로 : ${rr.width}</div>`;
+                ttt += `<div>세로 : ${rr.height}</div>`;
+                ttt += `<div>넓이 : ${rr.area}</div>`;
+                ttt += `<div>둘레길이 : ${rr.border}</div>`;
+                ttt += "</li>";
+            }
+
+            ttt += `</ul>`;
+            section.innerHTML = ttt;
+        }
+
+        window.onload = function(){
+            let dGo = document.querySelector("#dGo");
+            let tGo = document.querySelector("#tGo");
+
+            dGo.onclick = () => {
+                view(
+                    divGo,
+                    rectOne(10, 20),
+                    rectOne(30, 15),
+                    rectOne(25, 25),
+                    rectOne(40, 12),
+                    rectOne(18, 28)
+                );
+            };
+
+            tGo.onclick = () => {
+                view(
+                    tableGo,
+                    rectOne(10, 20),
+                    rectOne(30, 15),
+                    rectOne(25, 25),
+                    rectOne(40, 12),
+                    rectOne(18, 28)
+                );
+            };
+        };
+    </script>
+
+    <h2>직사각형 정보 출력자리</h2>
+    <input type="button" id="dGo" value="div">
+    <input type="button" id="tGo" value="table">
+    <section></section>
+</body>
+</html>
