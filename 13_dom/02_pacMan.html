@@ -26,8 +26,19 @@
             left: 300px;
             top: 200px;
         }
+        
+        .me{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #faf;
+            left: 50px;
+            top: 50px
+        }
     </style>
     <script>
+
+        var me
         window.onload=function(){
             var box = document.querySelector(".box")
             box.xx = 300
@@ -35,6 +46,10 @@
 
             box.dx = 2
             box.dy = 2
+
+            me = document.querySelector(".me")
+            me.xx = 50
+            me.yy = 50
 
             function boxMove(){
                 box.xx += box.dx
@@ -54,12 +69,58 @@
             // boxMove()
             timer = setInterval(boxMove, 30)
         }
+
+        window.onkeydown=function(e){
+            console.log(e.keyCode) 
+            /*   38
+               37  39
+                 40
+            */
+           switch(e.keyCode){
+                case 39:
+                    me.xx += 5
+                    break
+           }
+           switch(e.keyCode){
+                case 37:
+                    me.xx += -5
+                    break
+           }
+           switch(e.keyCode){
+                case 40:
+                    me.yy += 5
+                    break
+           }
+           switch(e.keyCode){
+                case 38:
+                    me.yy -= 5
+                    break
+           }
+
+            me.style.left= me.xx+"px"
+            me.style.top= me.yy+"px"
+            
+            if(me.xx < 0){
+                me.xx = 0
+            }
+            if(me.xx > 600-50){
+                me.xx = 600-50
+            }
+            if(me.yy < 0){
+                me.yy = 0
+            }
+            if(me.yy > 400-50){
+                me.yy = 400-50
+            }
+
+    }
     </script>
 </head>
 <body>
     <h1>02_pacMan</h1>
     <wrapper>
         <div class="box"></div>
+        <div class="me"></div>
     </wrapper>
 </body>
 </html>

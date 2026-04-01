@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10_exam</title>
+</head>
+<body>
+    <h1>10_exam</h1>
+    <script>
+        let avgCalc = {
+            일반 : (tot, arr) => tot/arr.length,
+            예체능 : (tot, arr) => {
+                let ret = 0 //평점
+                    //점수비중  국어 영어 수학 예체능
+                const rate = [0.05,0.1,0.15,0.7]
+                for (const i in rate) { // i :0,1,2,3
+                    ret += rate[i] * arr[i]
+                    //평점 += rate[0] * arr[0] : 0.05 * 국어점수
+                    //평점 += rate[1] * arr[1] : 0.1  * 영어점수
+                    //평점 += rate[2] * arr[2] : 0.15 * 수학점수
+                    //평점 += rate[3] * arr[3] : 0.7  * 예체능점수
+                }
+                return ret
+            }
+        }
+        function stOne(pname,...jum){
+            
+            
+            let totCalc = () =>{
+                let rr =0
+                for(j of jum) rr+= j
+                return rr
+            }
+            let kind = ["일반", "예체능"][jum.length-3]
+            let tot = totCalc()
+            return{
+                pname,
+                kind:["일반", "예체능"][jum.length-3],
+                tot,
+                // tot: (() =>{
+                //     let rr =0
+                //     for(j of jum) rr+= j
+                //     return rr
+                // })(),
+                avg: avgCalc[kind](tot,jum)
+            }
+        }
+
+        /*
+        let st = stOne("신짱구", 37,68,92)
+        console.log(st)
+        console.log(stOne("한유리", 97,68,32))
+        st = stOne("김철수", 37,58,72,96)
+        console.log(st)
+        console.log(stOne("이훈이", 97,78,52,36))
+        */
+        function view(vvFn,...studs){
+                // vvFn : 출력하는 방식 함수
+                // studs : 학생들
+                vvFn(studs)
+        }
+        // table
+        function tableGo(arr){
+            let section = document.querySelector("section")
+            // console.log(arr)
+            let ttt = `<table>`
+                for(const st of arr){
+                    ttt += "<tr>"
+                    for (const k in st) {
+                        ttt += `<td>${st[k]}</td>`
+                    }
+                    ttt += "</tr>"
+                }
+                ttt += `</table>`
+            section.innerHTML = ttt
+        }
+        // div
+        function divGo(arr){
+            let section = document.querySelector("section")
+            // console.log(arr)
+            let ttt = `<ul>`
+                for(const st of arr){
+                    ttt += "<li>"
+                    for (const k in st) {
+                        ttt += `<div>${st[k]}</div>`
+                    }
+                    ttt += "</li>"
+                }
+                ttt += `</ul>`
+            section.innerHTML = ttt
+        }
+        
+        window.onload=function(){
+            let dGo = document.querySelector("#dGo")
+            let tGo = document.querySelector("#tGo")
+
+            dGo.onclick=()=>{
+                view(
+                    divGo,
+                    //tableGo,
+                    stOne("신짱구", 37,68,92),
+                    stOne("한유리", 97,68,32),
+                    stOne("김철수", 37,58,72,96),
+                    stOne("이훈이", 97,78,52,36)
+                )
+            }
+            tGo.onclick=()=>{
+                view(
+                    //divGo,
+                    tableGo,
+                    stOne("신짱구", 37,68,92),
+                    stOne("한유리", 97,68,32),
+                    stOne("김철수", 37,58,72,96),
+                    stOne("이훈이", 97,78,52,36)
+                )
+            }
+        }
+
+        /*
+        직사각형 5개를 table, div 선택 화면 출력
+
+        직사각형 정보 : 가로, 세로, 넓이, 둘레길이
+
+        이벤트, DOM, 고차함수
+        */
+    </script>
+
+    <h2>학생정보 출력자리</h2>
+    <input type="button" id="dGo" value="div">
+    <input type="button" id="tGo" value="table">
+    <section>
+
+    </section>
+
+</body>
+</html>
